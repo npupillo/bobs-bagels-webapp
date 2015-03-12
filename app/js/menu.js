@@ -2,7 +2,7 @@ var menu = (function (module) {
 
   module.renderMenu = function(data){
     var template = Handlebars.compile($('#menu-info').html());
-      $('#menu').html(template({
+      $('#content').html(template({
     products: data
   }));
   };
