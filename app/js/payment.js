@@ -3,13 +3,13 @@ var payment = (function (module) {
   Stripe.setPublishableKey('pk_test_H4OZUG84CRFTuQ0ffA8SQg6g');
 
   module.pay = function(){
-  Stripe.card.createToken({
-    number: $('#number').val(),
-    cvc: $('#cvc').val(),
-    exp_month: $('#exp-month').val(),
-    exp_year: $('#exp-year').val()
-  }, stripeResponseHandler);
-};
+    Stripe.card.createToken({
+      number: $('#number').val(),
+      cvc: $('#cvc').val(),
+      exp_month: $('#exp-month').val(),
+      exp_year: $('#exp-year').val()
+      }, stripeResponseHandler);
+    };
 
   stripeResponseHandler = function(status, response) {
     console.log(response);
@@ -43,6 +43,3 @@ var payment = (function (module) {
 
 })(payment || {});
 
-$(document).ready(function(){
-  payment.init();
-});
