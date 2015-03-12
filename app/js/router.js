@@ -16,9 +16,12 @@ var router = (function (module) {
         url: module.host + "/products",
         type: 'GET'
       }).done(menu.renderMenu).fail();
+        cart.init();
+
     },
     payments: function(){
       $('#content').empty().load('partials/payment-form.html');
+      payment.init();
     },
   });
 
