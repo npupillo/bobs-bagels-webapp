@@ -8,7 +8,8 @@ var router = (function (module) {
     routes: {
       '':'home',
       'home': 'home',
-      'payments': 'payments'
+      'payments': 'payments',
+      'delivery-options': 'deliveryOptions'
     },
     home: function(){
       $('#content').empty();
@@ -22,6 +23,10 @@ var router = (function (module) {
     payments: function(){
       $('#content').empty().load('partials/payment-form.html');
       payment.init();
+    },
+    deliveryOptions: function(){
+      $('#content').empty().load('partials/order-time-form.html');
+      delivery.init();
     },
   });
 
