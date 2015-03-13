@@ -11,14 +11,11 @@ var cart = (function (module) {
     return orderItem;
   };
 
-
-
   module.addItem = function(item){
     var orderItem = buildOrderItem(item);
     var items = JSON.parse(localStorage["cart"]);
     items.push(orderItem);
-    localStorage.setItem('cart', JSON.stringify(items));;
-    debugger;
+    localStorage.setItem('cart', JSON.stringify(items));
   };
 
   module.init = function(){
