@@ -12,7 +12,9 @@ var payment = (function (module) {
     };
 
   stripeResponseHandler = function(status, response) {
+    debugger;
     console.log(response);
+
     var $form = $('#payment-form');
 
     if (response.error) {
