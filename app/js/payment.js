@@ -33,7 +33,7 @@ var payment = (function (module) {
 
   module.init = function(){
     console.log('im the payment')
-    $('#content').on('click', 'button', function(){
+    $('#content').on('click', '#submit-payment', function(){
       event.preventDefault();
       payment.pay();
     });
