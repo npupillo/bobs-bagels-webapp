@@ -1,16 +1,28 @@
 var cart = (function (module) {
 
-  module.items = [];
-  localStorage["cart"] = JSON.stringify(module.items);
+
+
+  buildOrderItem = function(item){
+    var orderItem = {};
+    var menuItem = item.attr('id');
+    orderItem['id'] = menuItem;
+    orderItem['quantity'] = $('#' + menuItem +'quantity').val();
+    orderItem['comments'] = $('#' + menuItem +'comments').val();
+    return orderItem;
+  };
+
+
 
   module.addItem = function(item){
-    cart.items = JSON.parse(localStorage["cart"])
-    cart.items.push(item.attr('id'));
-    localStorage["cart"] = JSON.stringify(cart.items);
+    var orderItem = buildOrderItem(item);
+    var items = JSON.parse(localStorage["cart"]);
+    items.push(orderItem);
+    localStorage.setItem('cart', JSON.stringify(items));;
+    debugger;
   };
 
   module.init = function(){
-    $('#content').on('click', 'button', function(){
+    $('#content').on('submit', 'form', function(){
       cart.addItem($(this));
     });
   };
