@@ -29,7 +29,7 @@ var router = (function (module) {
       $('#content').empty().load('partials/order-time-form.html');
       delivery.init();
     },
-	registrion: function(){
+	registration: function(){
 	  $('#content').empty().load('partials/registration-form.html');
       registration.init();
 	 },
