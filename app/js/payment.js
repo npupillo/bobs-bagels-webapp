@@ -29,9 +29,7 @@ var payment = (function (module) {
         url: 'http://localhost:3000/charges',
         type: 'POST',
         data: { charge : {
-              token: token,
-              amount: 100,
-
+              token: token
               }
           }
       }).done(function(data){
