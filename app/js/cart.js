@@ -1,27 +1,66 @@
 var cart = (function (module) {
 
-
-
-  buildOrderItem = function(item){
+  var buildOrderItem = function(item){
     var orderItem = {};
     var menuItem = item.attr('id');
-    orderItem['id'] = menuItem;
+    var count = JSON.parse(localStorage['count']);
+    count += 1;
+    orderItem['product_id'] = menuItem;
     orderItem['quantity'] = $('#' + menuItem +'quantity').val();
+    orderItem['name'] = $('#' + menuItem +'name').text();
     orderItem['comments'] = $('#' + menuItem +'comments').val();
+    orderItem['id'] = count;
+    localStorage['count'] = JSON.stringify(count);
     return orderItem;
   };
 
-  module.addItem = function(item){
+  var renderCart = function(){
+      var data = JSON.parse(localStorage['cart']);
+      var template = Handlebars.compile($('#cart-render').html());
+      $('#cart').html(template({
+      orderItem: data,
+    }));
+  };
+
+  var emptyCartNormalize = function(){
+    if (localStorage['cart'] === undefined) {
+      localStorage.setItem('cart', "[]");
+    };
+    if (localStorage['count'] === undefined) {
+      localStorage.setItem('count', "0");
+    };
+  };
+
+  var addItem = function(item){
     var orderItem = buildOrderItem(item);
     var items = JSON.parse(localStorage["cart"]);
     items.push(orderItem);
     localStorage.setItem('cart', JSON.stringify(items));
+    renderCart();
+  };
+
+
+  var removeItem = function(item){
+    var items = JSON.parse(localStorage["cart"]);
+    items = $.grep(items, function(n){
+     return n.id != item.val();
+    });
+    localStorage.setItem('cart', JSON.stringify(items));
+    renderCart();
   };
 
   module.init = function(){
+
     $('#content').on('submit', 'form', function(){
-      cart.addItem($(this));
+      addItem($(this));
     });
+
+    $('#cart').on('click', 'button', function(){
+      removeItem($(this));
+    });
+
+    emptyCartNormalize();
+    renderCart();
   };
 
   return module;
