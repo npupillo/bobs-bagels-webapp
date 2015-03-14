@@ -31,7 +31,11 @@
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
+<<<<<<< HEAD
 		  <li><a href="#/registration-form.html">Sign Up</a></li>
+=======
+          <li><div id="cart"></div></li>
+>>>>>>> e6966acc808420e50f09dbaa80d906cfb8f15401
         </ul>
         <h3 class="text-muted">bobs bagels app</h3>
       </div>
@@ -101,7 +105,7 @@
     {{#each products}}
       <div id="item-{{id}}">
         <div class="menu-item">
-          <h2>{{name}}</h2>
+          <h2 id="{{id}}name">{{name}}</h2>
           <span>${{price}}</span>
         </div>
         <p>{{description}}</p>
@@ -125,6 +129,15 @@
       </div>
 
 
+    {{/each}}
+    </script>
+    <script type="text/x-handlebars-template" id='cart-render'>
+    {{#each orderItem}}
+      <div id="cart-{{id}}">
+        <p>{{name}}</p>
+        <p>x{{quantity}}</p>
+        <button value="{{id}}" id="remove-{{id}}">Remove from Cart</button>
+      </div>
     {{/each}}
     </script>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

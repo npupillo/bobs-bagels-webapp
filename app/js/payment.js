@@ -31,7 +31,6 @@ var payment = (function (module) {
               token: token,
               amount: 100,
 			  customer_id: "cus_5rOOrVnSCnMESX"
-
               }
           }
       }).done(function(data){
