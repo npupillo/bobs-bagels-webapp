@@ -23,14 +23,14 @@ var payment = (function (module) {
     } else {
       // response contains id and card, which contains additional card details
       var token = response.id;
-      debugger;
 
       $.ajax({
-        url: 'http://localhost:3000/charges',
+        url: 'http://localhost:3000/charges/make_charge',
         type: 'POST',
         data: { charge : {
               token: token,
               amount: 100,
+			  customer_id: "cus_5rOOrVnSCnMESX"
 
               }
           }

@@ -9,7 +9,8 @@ var router = (function (module) {
       '':'home',
       'home': 'home',
       'payments': 'payments',
-      'delivery-options': 'deliveryOptions'
+      'delivery-options': 'deliveryOptions',
+	  'registration': 'registration'
     },
     home: function(){
       $('#content').empty();
@@ -28,6 +29,10 @@ var router = (function (module) {
       $('#content').empty().load('partials/order-time-form.html');
       delivery.init();
     },
+	registrion: function(){
+	  $('#content').empty().load('partials/registration-form.html');
+      registration.init();
+	 },
   });
 
   module.router = new Router();
