@@ -3,7 +3,6 @@ var registration = (function (module) {
 	var authToken;
 
 	module.submitRegistration = function () {
-		debugger;
 		$.ajax({
 				url: 'http://localhost:3000/users',
 				type: 'POST',

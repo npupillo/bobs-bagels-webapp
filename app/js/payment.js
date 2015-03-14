@@ -30,7 +30,7 @@ var payment = (function (module) {
         data: { charge : {
               token: token,
               amount: 100,
-			  customer_id: "cus_5rOOrVnSCnMESX"
+			  customer_id: "cus_5rOOrVnSCnMESX" // going to have to expand this to two functions that make charges by user id or by card token.
               }
           }
       }).done(function(data){
