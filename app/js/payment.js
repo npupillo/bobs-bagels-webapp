@@ -8,11 +8,10 @@ var payment = (function (module) {
       cvc: $('#cvc').val(),
       exp_month: $('#exp-month').val(),
       exp_year: $('#exp-year').val()
-      }, stripeResponseHandler);
+      }, _stripeResponseHandler);
     };
 
-  stripeResponseHandler = function(status, response) {
-    debugger;
+  _stripeResponseHandler = function(status, response) {
     console.log(response);
 
     var $form = $('#payment-form');
@@ -24,19 +23,30 @@ var payment = (function (module) {
     } else {
       // response contains id and card, which contains additional card details
       var token = response.id;
-      // Insert the token into the form so it gets submitted to the server
-      $form.append($('<input type="hidden" name="stripeToken" />').val(token));
-      // and submit
-      $form.get(0).submit();
-    }
+      debugger;
+
+      $.ajax({
+        url: 'http://localhost:3000/charges',
+        type: 'POST',
+        data: { charge : {
+              token: token
+              }
+          }
+      }).done(function(data){
+        console.log(data);
+      }).fail(function(jqXHR, textStatus, errorThrown){
+        console.log(jqXHR, textStatus, errorThrown);
+      });
+    };
   };
 
 
 
   module.init = function(){
     console.log('im the payment')
-    $('#content').on('click', '#submit-payment', function(){
+    $('#content').on('submit', function(){
       event.preventDefault();
+
       payment.pay();
     });
   };

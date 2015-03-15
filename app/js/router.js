@@ -9,7 +9,10 @@ var router = (function (module) {
       '':'home',
       'home': 'home',
       'payments': 'payments',
-      'delivery-options': 'deliveryOptions'
+      'delivery-options': 'deliveryOptions',
+      'catering': 'catering',
+      'my-profile': 'myProfile',
+      'about': 'about'
     },
     home: function(){
       $('#content').empty();
@@ -17,8 +20,7 @@ var router = (function (module) {
         url: module.host + "/products",
         type: 'GET'
       }).done(menu.renderMenu).fail();
-        cart.init();
-
+      cart.init();
     },
     payments: function(){
       $('#content').empty().load('partials/payment-form.html');
@@ -28,6 +30,24 @@ var router = (function (module) {
       $('#content').empty().load('partials/order-time-form.html');
       delivery.init();
     },
+    catering: function(){
+      $('#content').empty();
+      $.ajax({
+        url: module.host + "/products",
+        type: 'GET'
+      }).done(menu.renderCaterMenu).fail();
+      cart.init();
+    },
+    myProfile: function(){
+      $('#content').empty();
+      $.ajax({
+        url: module.host + "/users/1",
+        type: 'GET'
+      }).done().fail();
+    },
+    about: function(){
+      $('#content').empty().load('partials/about.html');;
+    }
   });
 
   module.router = new Router();
