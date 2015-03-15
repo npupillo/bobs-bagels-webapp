@@ -122,7 +122,9 @@
               <textarea name="comments" id="{{id}}comments"></textarea>
             </label>
           </div>
-
+          {{#each ingredients}}
+            <p>{{name}}</p>
+          {{/each}}
           <button type="submit" >Add to Cart</button>
         </form>
       </div>
