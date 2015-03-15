@@ -32,7 +32,6 @@ var router = (function (module) {
       $('#content').empty().load('partials/order-time-form.html');
       delivery.init();
     },
-<<<<<<< HEAD
 	registration: function(){
 	  $('#content').empty().load('partials/registration-form.html');
       registration.init();
@@ -41,7 +40,6 @@ var router = (function (module) {
 		$('#content').empty().load('partials/login-form.html');
       registration.init();
   }
-=======
     catering: function(){
       $('#content').empty();
       $.ajax({
@@ -52,15 +50,15 @@ var router = (function (module) {
     },
     myProfile: function(){
       $('#content').empty();
-      $.ajax({
-        url: module.host + "/users/1",
-        type: 'GET'
-      }).done().fail();
+      // $.ajax({
+      //   url: module.host + "/users/1",
+      //   type: 'GET'
+      // }).done().fail();
+      profile.init();
     },
     about: function(){
       $('#content').empty().load('partials/about.html');;
     }
->>>>>>> 8a8193f22d63990f9dd72a89cbf0402448724f29
   });
 
   module.router = new Router();
