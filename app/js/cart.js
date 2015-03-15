@@ -9,6 +9,7 @@ var cart = (function (module) {
     orderItem['quantity'] = parseInt($('#' + menuItem +'quantity').val());
     orderItem['name'] = $('#' + menuItem +'name').text();
     orderItem['comments'] = $('#' + menuItem +'comments').val();
+	orderItem['price'] = $('#' + menuItem + 'price').text();
     orderItem['id'] = count;
     localStorage['count'] = JSON.stringify(count);
     return orderItem;
@@ -35,16 +36,10 @@ var cart = (function (module) {
     var orderItem = buildOrderItem(item);
     var items = JSON.parse(localStorage["cart"]);
 	  // if the orderItem has the same name as a menuItem than add to the menuItem's quantity
-	  for (var i = 0; i <= items.length; i++){
-		  if (items[0] != undefined && items[i]['name'] == orderItem['name']){
-			items[i]['quantity'] += parseInt(1);
-		  } else {
     		items.push(orderItem);
-		  }
 	localStorage.setItem('cart', JSON.stringify(items));
     renderCart();
-  	}
-  };
+  	};
 
 
   var removeItem = function(item){

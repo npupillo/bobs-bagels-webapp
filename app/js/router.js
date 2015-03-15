@@ -12,7 +12,6 @@ var router = (function (module) {
       'delivery-options': 'deliveryOptions',
 	  'registration': 'registration',
 	  'login': 'login',
-	  'delivery': 'delivery'
     },
     home: function(){
       $('#content').empty();

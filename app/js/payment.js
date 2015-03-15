@@ -23,13 +23,17 @@ var payment = (function (module) {
     } else {
       // response contains id and card, which contains additional card details
       var token = response.id;
-
+		
+	  var cartJson = JSON.parse(localStorage['cart'])
+	  var amountString = $.grep(cartJson[0]['price'], function(n){ return n != "$"}).join("");
+	  var amount = parseInt(amountString) * 100;
+		
       $.ajax({
         url: 'http://localhost:3000/charges/make_charge',
         type: 'POST',
         data: { charge : {
               token: token,
-              amount: 100,
+              amount: amount,
 			  customer_id: "cus_5rOOrVnSCnMESX" // going to have to expand this to two functions that make charges by user id or by card token.
               }
           }
@@ -40,9 +44,7 @@ var payment = (function (module) {
       });
     };
   };
-
-
-
+	
   module.init = function(){
     console.log('im the payment')
     $('#content').on('submit', function(){
