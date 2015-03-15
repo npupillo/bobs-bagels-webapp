@@ -1,6 +1,9 @@
 var payment = (function (module) {
 
   Stripe.setPublishableKey('pk_test_H4OZUG84CRFTuQ0ffA8SQg6g');
+	
+	module.calculateTotal = function(){
+
 
   module.pay = function(){
     Stripe.card.createToken({
@@ -25,15 +28,28 @@ var payment = (function (module) {
       var token = response.id;
 		
 	  var cartJson = JSON.parse(localStorage['cart'])
-	  var amountString = $.grep(cartJson[0]['price'], function(n){ return n != "$"}).join("");
-	  var amount = parseInt(amountString) * 100;
+	  var priceArray = [];
+	  for (var i = 0; i < cartJson.length; i++){
+		  
+		  var grepPrice = $.grep(cartJson[i]['price'], function(n){
+			  return n != "$";
+		  });
+		  priceArray.push(parseInt(grepPrice.join("")));
+		  console.log(priceArray);
+	};
+	 var amount = 0
+	 for(var i in priceArray) {
+		 amount += priceArray[i]; 
+	}
+	  var stripeAmount = parseInt(amount) * 100;
+	};
 		
       $.ajax({
         url: 'http://localhost:3000/charges/make_charge',
         type: 'POST',
         data: { charge : {
               token: token,
-              amount: amount,
+              amount: stripeAmount,
 			  customer_id: "cus_5rOOrVnSCnMESX" // going to have to expand this to two functions that make charges by user id or by card token.
               }
           }
@@ -47,6 +63,7 @@ var payment = (function (module) {
 	
   module.init = function(){
     console.log('im the payment')
+	module.calculateTotal();
     $('#content').on('submit', function(){
       event.preventDefault();
 
