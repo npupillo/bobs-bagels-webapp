@@ -14,7 +14,8 @@ var router = (function (module) {
 	  'login': 'login',
       'catering': 'catering',
       'my-profile': 'myProfile',
-      'about': 'about'
+      'about': 'about',
+	  'store-payment-info': 'storePaymentInfo'
     },
     home: function(){
       $('#content').empty();
@@ -39,7 +40,7 @@ var router = (function (module) {
 	 login: function(){
 		$('#content').empty().load('partials/login-form.html');
       registration.init();
-  }
+  		},
     catering: function(){
       $('#content').empty();
       $.ajax({
@@ -48,12 +49,16 @@ var router = (function (module) {
       }).done(menu.renderCaterMenu).fail();
       cart.init();
     },
+	storePaymentInfo: function(){
+		$('#content').empty().load('partials/store-payment-info-confirmation.html');
+		storePaymentInfo.init();
+	},
     myProfile: function(){
       $('#content').empty();
-      // $.ajax({
-      //   url: module.host + "/users/1",
-      //   type: 'GET'
-      // }).done().fail();
+//       $.ajax({
+//         url: module.host + "/users/1",
+//         type: 'GET'
+//       }).done().fail();
       profile.init();
     },
     about: function(){
