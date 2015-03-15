@@ -12,6 +12,9 @@ var router = (function (module) {
       'delivery-options': 'deliveryOptions',
 	  'registration': 'registration',
 	  'login': 'login',
+      'catering': 'catering',
+      'my-profile': 'myProfile',
+      'about': 'about'
     },
     home: function(){
       $('#content').empty();
@@ -19,8 +22,7 @@ var router = (function (module) {
         url: module.host + "/products",
         type: 'GET'
       }).done(menu.renderMenu).fail();
-        cart.init();
-
+      cart.init();
     },
     payments: function(){
       $('#content').empty().load('partials/payment-form.html');
@@ -30,6 +32,7 @@ var router = (function (module) {
       $('#content').empty().load('partials/order-time-form.html');
       delivery.init();
     },
+<<<<<<< HEAD
 	registration: function(){
 	  $('#content').empty().load('partials/registration-form.html');
       registration.init();
@@ -38,6 +41,26 @@ var router = (function (module) {
 		$('#content').empty().load('partials/login-form.html');
       registration.init();
   }
+=======
+    catering: function(){
+      $('#content').empty();
+      $.ajax({
+        url: module.host + "/products",
+        type: 'GET'
+      }).done(menu.renderCaterMenu).fail();
+      cart.init();
+    },
+    myProfile: function(){
+      $('#content').empty();
+      $.ajax({
+        url: module.host + "/users/1",
+        type: 'GET'
+      }).done().fail();
+    },
+    about: function(){
+      $('#content').empty().load('partials/about.html');;
+    }
+>>>>>>> 8a8193f22d63990f9dd72a89cbf0402448724f29
   });
 
   module.router = new Router();

@@ -9,6 +9,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/mocha/mocha.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -94,6 +95,8 @@
     <script src="bower_components/handlebars/handlebars.js"></script>
     <script src="bower_components/accounting/accounting.js"></script>
     <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/chai/chai.js"></script>
+    <script src="bower_components/mocha/mocha.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
@@ -125,7 +128,9 @@
               <textarea name="comments" id="{{id}}comments"></textarea>
             </label>
           </div>
-
+          {{#each ingredients}}
+            <p>{{name}}</p>
+          {{/each}}
           <button type="submit" >Add to Cart</button>
         </form>
       </div>

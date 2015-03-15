@@ -26,31 +26,15 @@ var payment = (function (module) {
     } else {
       // response contains id and card, which contains additional card details
       var token = response.id;
-		
-	  var cartJson = JSON.parse(localStorage['cart'])
-	  var priceArray = [];
-	  for (var i = 0; i < cartJson.length; i++){
-		  
-		  var grepPrice = $.grep(cartJson[i]['price'], function(n){
-			  return n != "$";
-		  });
-		  priceArray.push(parseInt(grepPrice.join("")));
-		  console.log(priceArray);
 	};
-	 var amount = 0
-	 for(var i in priceArray) {
-		 amount += priceArray[i]; 
-	}
-	  var stripeAmount = parseInt(amount) * 100;
-	};
-		
+
       $.ajax({
         url: 'http://localhost:3000/charges/make_charge',
         type: 'POST',
         data: { charge : {
               token: token,
-              amount: stripeAmount,
-			  customer_id: "cus_5rOOrVnSCnMESX" // going to have to expand this to two functions that make charges by user id or by card token.
+              cart: localStorage['cart'],
+//			  customer_id: "cus_5rOOrVnSCnMESX" // going to have to expand this to two functions that make charges by user id or by card token.
               }
           }
       }).done(function(data){
