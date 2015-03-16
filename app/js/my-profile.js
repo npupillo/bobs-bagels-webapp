@@ -22,7 +22,7 @@ var profile = (function (module){
   module.getAjax = function(user_id){
     // debugger;
         $.ajax({
-          url: 'http://localhost:3000/users/' + user_id,
+          url: 'http://localhost:3000/users/' + localStorage['authToken'],
           type: 'PATCH',
           dataType: 'JSON',
           data:
@@ -50,7 +50,7 @@ var profile = (function (module){
 
  module.init = function(){
     $.ajax({
-    url: 'http://localhost:3000/users/1',
+    url: 'http://localhost:3000/users/' + localStorage['authToken'],
     type: 'GET',
     dataType: 'JSON'
     })

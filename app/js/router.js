@@ -10,8 +10,8 @@ var router = (function (module) {
       'home': 'home',
       'payments': 'payments',
       'delivery-options': 'deliveryOptions',
-	  'registration': 'registration',
-	  'login': 'login',
+	    'registration': 'registration',
+	    'login': 'login',
       'catering': 'catering',
       'my-profile': 'myProfile',
       'about': 'about',
@@ -27,18 +27,19 @@ var router = (function (module) {
     payments: function(){
       $('#content').empty().load('partials/payment-form.html');
       payment.init();
+      order.init();
     },
     deliveryOptions: function(){
       $('#content').empty().load('partials/order-time-form.html');
-      delivery.init();
+      order.init();
     },
-	registration: function(){
-	  $('#content').empty().load('partials/registration-form.html');
+	  registration: function(){
+	    $('#content').empty().load('partials/registration-form.html');
       registration.init();
-	 },
-	 login: function(){
-		$('#content').empty().load('partials/login-form.html');
-      registration.init();
+	   },
+	  login: function(){
+		  $('#content').empty().load('partials/login-form.html');
+        registration.init();
   		},
     catering: function(){
       $('#content').empty();
