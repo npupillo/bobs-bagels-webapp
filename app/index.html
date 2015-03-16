@@ -1,45 +1,56 @@
 <!doctype html>
 <html class="no-js">
-  <head>
-    <meta charset="utf-8">
-    <title>bobs bagels app</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/mocha/mocha.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
-    <!-- build:js scripts/vendor/modernizr.js -->
-    <script src="bower_components/modernizr/modernizr.js"></script>
-    <!-- endbuild -->
 
-  </head>
-  <body>
-    <!--[if lt IE 10]>
+<head>
+	<meta charset="utf-8">
+	<title>bobs bagels app</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!-- build:css(.) styles/vendor.css -->
+	<!-- bower:css -->
+	<link rel="stylesheet" href="bower_components/mocha/mocha.css" />
+	<!-- endbower -->
+	<!-- endbuild -->
+	<!-- build:css(.tmp) styles/main.css -->
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
+	<!-- build:js scripts/vendor/modernizr.js -->
+	<script src="bower_components/modernizr/modernizr.js"></script>
+	<!-- endbuild -->
+
+</head>
+
+<body>
+	<!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+	<div class="header">
+		<ul class="nav nav-pills pull-right">
+			<li class="active"><a href="#">Home</a>
+			</li>
+			<li><a href="#">About</a>
+			</li>
+			<li><a href="#">Contact</a>
+			</li>
+			<li><a href="#/registration">Sign Up</a>
+			</li>
+			<li><a href="#/login">Login</a>
+			</li>
+			<li><a href="#/delivery-options">Checkout</a>
+			</li>
+			<div id="cart"></div>
+		</ul>
+		<h3 class="text-muted">bobs bagels app</h3>
+	</div>
 
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><div id="cart"></div></li>
-        </ul>
-        <h3 class="text-muted">bobs bagels app</h3>
-      </div>
+	<div class="container">
+		<div id='content'></div>
 
-      <div id='content'></div>
 
-      <!-- <div class="jumbotron">
+		<!-- <div class="jumbotron">
         <h1>'Allo, 'Allo!</h1>
         <p class="lead">Always a pleasure scaffolding your apps.</p>
         <p><a class="btn btn-lg btn-success" href="#">Splendid! <span class="glyphicon glyphicon-ok"></span></a></p>
@@ -236,4 +247,5 @@
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <!-- endbuild -->
 </body>
+
 </html>

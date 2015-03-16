@@ -6,9 +6,10 @@ var cart = (function (module) {
     var count = JSON.parse(localStorage['count']);
     count += 1;
     orderItem['product_id'] = menuItem;
-    orderItem['quantity'] = $('#' + menuItem +'quantity').val();
+    orderItem['quantity'] = parseInt($('#' + menuItem +'quantity').val());
     orderItem['name'] = $('#' + menuItem +'name').text();
     orderItem['comments'] = $('#' + menuItem +'comments').val();
+	orderItem['price'] = $('#' + menuItem + 'price').text();
     orderItem['id'] = count;
     orderItem['ingredients'] = $("form#" + menuItem + " input[type=checkbox]:checked").map(function() {
       return this.value;
@@ -38,10 +39,11 @@ var cart = (function (module) {
   var addItem = function(item){
     var orderItem = buildOrderItem(item);
     var items = JSON.parse(localStorage["cart"]);
-    items.push(orderItem);
-    localStorage.setItem('cart', JSON.stringify(items));
+	  // if the orderItem has the same name as a menuItem than add to the menuItem's quantity
+    		items.push(orderItem);
+	localStorage.setItem('cart', JSON.stringify(items));
     renderCart();
-  };
+  	};
 
 
   var removeItem = function(item){
