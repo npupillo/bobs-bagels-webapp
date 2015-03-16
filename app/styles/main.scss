@@ -81,13 +81,15 @@ h1 {
 
 /* nav pill color - inactive */
 .nav-pills>li>a {
-  background-color: #2D365A;
-  color: #FFF;
+  background-color: #C7142A;
+  color: #000;
 }
 
 /* nav pill color - hover */
 .nav-pills>li>a:hover {
-  background-color: #C7142A;
+  background-color: #2D365A;
+  color: #FFF;
+
 }
 
 .nav_item {
