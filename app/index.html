@@ -165,7 +165,9 @@
             {{/each}}
           </div>
           </div>
+
           <button class='cart-submit' type="submit" >Add to Cart</button>
+
         </form>
       </div>
     {{/each}}
@@ -195,7 +197,7 @@
       <div id="cart-{{id}}">
         <p>{{name}}</p>
         <p>x{{quantity}}</p>
-        <button value="{{id}}" id="remove-{{id}}">Remove from Cart</button>
+        <button value="{{id}}" class='.remove-cart' id="remove-{{id}}">Remove from Cart</button>
       </div>
     {{/each}}
     </script>
