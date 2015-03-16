@@ -160,8 +160,7 @@ module.bagels = [{
   };
 
    var renderBagels = function(item){
-      if (item.product_type === "a") {
-        if (item.id === 8) {
+      if (item.id === 8) {
           item.bagel = menu.bagels[3];
       } else if (item.id === 9 ) {
         item.bagel = menu.bagels[1];
@@ -171,10 +170,9 @@ module.bagels = [{
         item.bagel = menu.bagels[4];
       } else {
         item.bagel = menu.bagels[0];
-      }
-    };
+      };
       item.otherBagels = $.grep(menu.bagels, function(bagel){
-      return bagel.id != item.id;
+      return bagel.id != item.bagel.id;
       });
     };
 
