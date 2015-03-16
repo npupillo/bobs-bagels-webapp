@@ -171,6 +171,7 @@ module.bagels = [{
       } else {
         item.bagel = menu.bagels[0];
       };
+
       item.otherBagels = $.grep(menu.bagels, function(bagel){
       return bagel.id != item.bagel.id;
       });
