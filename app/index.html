@@ -116,6 +116,16 @@
               <input type="number" name="quantity" id="{{id}}quantity" min="1" max="100" step="1" value="1">
             </label>
           </div>
+          <h4>Bagel</h4>
+          <div class="form-row">
+            <label>
+                <input type="radio" name="bagel" id="{{bagel.id}}" value="{{bagel.id}}" checked>{{bagel.bagel_type}}
+                {{#each otherBagels}}
+                  <input type="radio" name="bagel" id="{{id}}" value="{{id}}">{{bagel_type}}
+                {{/each}}
+            </label>
+
+          </div>
 
           <div class="form-row">
             <label>
@@ -123,16 +133,51 @@
               <textarea name="comments" id="{{id}}comments"></textarea>
             </label>
           </div>
-          {{#each ingredients}}
-            <p>{{name}}</p>
-          {{/each}}
+          <h4>Extras</h4>
+          <div id="{{id}}checks">
+          <div class="form-row">
+            {{#each extras}}
+               <label>
+                  <span>{{name}}</span>
+                  <input name="ingredients" type="checkbox" value="{{id}}">
+              </label>
+            {{/each}}
+          </div>
+          <h4>Removies</h4>
+          <div class="form-row">
+            {{#each ingredients}}
+              <label>
+                <span>{{name}}</span>
+                <input class="remove" name="ingredients" type="checkbox" value="{{id}}" checked>
+              </label>
+            {{/each}}
+          </div>
+          </div>
           <button type="submit" >Add to Cart</button>
         </form>
       </div>
-
-
     {{/each}}
     </script>
+    <script type="text/x-handlebars-template" id='drink-render'>
+    {{#each drinks}}
+      <div id="item-{{id}}">
+        <div class="menu-item">
+          <h4 id="{{id}}name">{{name}}</h4>
+          <span>${{price}}</span>
+        </div>
+        <form id="{{id}}">
+          <div class="form-row">
+            <label>
+              <span>Quantity</span>
+              <input type="number" name="quantity" id="{{id}}quantity" min="1" max="100" step="1" value="1">
+            </label>
+          </div>
+          <button type="submit" >Add to Cart</button>
+        </form>
+      </div>
+    {{/each}}
+    </script>
+
     <script type="text/x-handlebars-template" id='cart-render'>
     {{#each orderItem}}
       <div id="cart-{{id}}">

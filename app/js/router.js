@@ -19,7 +19,7 @@ var router = (function (module) {
       $.ajax({
         url: module.host + "/products",
         type: 'GET'
-      }).done(menu.renderMenu).fail();
+      }).done(menu.init).fail();
       cart.init();
     },
     payments: function(){
