@@ -11,13 +11,7 @@ var registration = (function (module) {
 				last_name: $('#last-name').val(),
 				email: $('#email').val(),
 				password: $('#password').val()}},
-			}).done(function(data){
-			console.log(data);
-			module.loginSuccess(data);
-			}).fail(function (err) {
-				console.log(err);
-			module.acceptFailure(err);
-			});
+			}).done(registration.loginSuccess).fail(registration.acceptFailure);
 
 		return false;
 	};
@@ -30,17 +24,13 @@ var registration = (function (module) {
 
 	module.submitLogin = function (event) {
 		var $form;
-		event.preventDefault();
 		$form = $(this);
+		debugger;
 		$.ajax({
 				url: 'http://localhost:3000/users/sign_in',
 				type: 'POST',
-				data: $form.serialize()
-			}).done(function(data){
-				console.log(data);
-			}).fail(function (err) {
-				console.log(err);
-			});
+				data: {email: $('#email').val(), password: $('#password').val()},
+			}).done(registration.loginSuccess).fail(registration.acceptFailure);
 
 		return false;
 	};
@@ -60,16 +50,22 @@ var registration = (function (module) {
 	};
 
 	module.init = function () {
-		console.log('yo in the registration')
+		console.log('yo in the registration');
 		authToken = localStorage.getItem('authToken');
 
 		registration.setupAjaxRequests();
 
-		$('#content').on('click', '#hi', function(event){
+		$('#content').on('click', '#registration-submit', function(event){
 			event.preventDefault();
 			registration.submitRegistration();
-		}
-	)};
+		});
+
+		$('#content').on('submit', '#login-form', function(event){
+			event.preventDefault();
+			registration.submitLogin();
+
+		});
+	};
 
 	return module;
 

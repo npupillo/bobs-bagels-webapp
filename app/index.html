@@ -165,7 +165,9 @@
             {{/each}}
           </div>
           </div>
+
           <button class='cart-submit' type="submit" >Add to Cart</button>
+
         </form>
       </div>
     {{/each}}
@@ -195,12 +197,12 @@
       <div id="cart-{{id}}">
         <p>{{name}}</p>
         <p>x{{quantity}}</p>
-        <button value="{{id}}" id="remove-{{id}}">Remove from Cart</button>
+        <button value="{{id}}" class='.remove-cart' id="remove-{{id}}">Remove from Cart</button>
       </div>
     {{/each}}
     </script>
 
-  <!-- HANDLEBARS TEMPLATE EDIT USER PROFILE -->
+  <!-- HANDLEBARS TEMPLATE: EDIT USER PROFILE -->
   <script id="user_profile_template" type="text/x-handlebars-template">
     {{#user}}
       <div id=user-{{this.id}}>
@@ -227,7 +229,9 @@
           Address 2: <input type=text id=user-address-2-field value="{{address_2}}" /> <br>
           Zipcode: <input type=text id=user-zipcode-field value="{{address_zipcode}}" /> <p>
 
-          <input type="submit" value="Save Profile"/>
+          <button id='edit-profile-submit' type="submit">Save Profile</button>
+          <button id='edit-profile-cancel' type="submit">Cancel</button>
+
         </form>
       </div>
     {{/user}}
