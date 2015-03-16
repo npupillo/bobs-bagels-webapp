@@ -20,11 +20,13 @@ var order = (function (module) {
     });
 
 
-    $('#content').on('click', '#payment-submit', function(){
+    $('#content').on('click', '#payment-submit', function(event){
+      event.preventDefault();
       $.ajaxPrefilter(function( options ) {
         options.headers = {};
         options.headers['AUTHORIZATION'] = "Token token=" + localStorage["authToken"];
       });
+      debugger;
       $.ajax({
         url: 'http://localhost:3000/users/' + localStorage["authToken"] + '/orders',
         type: 'POST',
@@ -40,7 +42,6 @@ var order = (function (module) {
       }).done(function(data){
         console.log(data);
       }).fail(function (jqXHR, textStatus, errorThrown) {
-              debugger;
         console.log(jqXHR, textStatus, errorThrown);
       });
     });
