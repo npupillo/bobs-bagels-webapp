@@ -1,6 +1,6 @@
 var payment = (function (module) {
 
-	Stripe.setPublishableKey('pk_test_H4OZUG84CRFTuQ0ffA8SQg6g');
+//	Stripe.setPublishableKey('pk_test_H4OZUG84CRFTuQ0ffA8SQg6g');
 
 	//	module.customer_pay = function () {
 	//		Stripe.

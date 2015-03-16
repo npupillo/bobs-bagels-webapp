@@ -15,7 +15,6 @@ var router = (function (module) {
       'catering': 'catering',
       'my-profile': 'myProfile',
       'about': 'about',
-//	  'store-payment-info': 'storePaymentInfo'
     },
     home: function(){
       $('#content').empty();
@@ -49,10 +48,6 @@ var router = (function (module) {
       }).done(menu.renderCaterMenu).fail();
       cart.init();
     },
-//	storePaymentInfo: function(){
-//		$('#content').empty().load('partials/store-payment-info-confirmation.html');
-//		storePaymentInfo.init();
-//	},
     myProfile: function(){
       $('#content').empty();
 //       $.ajax({
