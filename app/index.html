@@ -111,6 +111,7 @@
     <script src="js/payment.js" type="text/javascript"></script>
     <script src="js/cart.js" type="text/javascript"></script>
     <script src="js/delivery.js" type="text/javascript"></script>
+    <script src="js/registration.js" type="text/javascript"></script>
     <script src="js/my-profile.js" type="text/javascript"></script>
     <script type="text/x-handlebars-template" id='menu-info'>
     {{#each products}}
@@ -164,7 +165,7 @@
             {{/each}}
           </div>
           </div>
-          <button type="submit" >Add to Cart</button>
+          <button type="submit" class='.add-cart' >Add to Cart</button>
         </form>
       </div>
     {{/each}}
@@ -194,7 +195,7 @@
       <div id="cart-{{id}}">
         <p>{{name}}</p>
         <p>x{{quantity}}</p>
-        <button value="{{id}}" id="remove-{{id}}">Remove from Cart</button>
+        <button value="{{id}}" class='.remove-cart' id="remove-{{id}}">Remove from Cart</button>
       </div>
     {{/each}}
     </script>

@@ -54,9 +54,9 @@ var payment = (function (module) {
 };
 
 module.init = function () {
-	console.log('im the payment')
-	$('#content').on('submit', function () {
+	$('#content').on('click', '#payment-submit', function () {
 		event.preventDefault();
+		debugger;
 		module.card_pay();
 	});
 };
