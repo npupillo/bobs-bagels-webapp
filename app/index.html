@@ -110,7 +110,7 @@
     <script src="js/router.js" type="text/javascript"></script>
     <script src="js/payment.js" type="text/javascript"></script>
     <script src="js/cart.js" type="text/javascript"></script>
-    <script src="js/delivery.js" type="text/javascript"></script>
+    <script src="js/order.js" type="text/javascript"></script>
     <script src="js/registration.js" type="text/javascript"></script>
     <script src="js/my-profile.js" type="text/javascript"></script>
     <script type="text/x-handlebars-template" id='menu-info'>
@@ -118,7 +118,7 @@
       <div id="item-{{id}}">
         <div class="menu-item">
           <h2 id="{{id}}name">{{name}}</h2>
-          <span>${{price}}</span>
+          <span id='{{id}}price'>${{price}}</span>
         </div>
         <p>{{description}}</p>
         <form id="{{id}}">

@@ -178,10 +178,10 @@ module.bagels = [{
     };
 
     module.init = function(data){
-       var bagelMenu = $.grep(data, function(n){
+      var bagelMenu = $.grep(data, function(n){
         return ((n.product_type === "a") || (n.product_type === "b"));
       });
-       var drinks = $.grep(data, function(n){
+      var drinks = $.grep(data, function(n){
         return n.product_type === "d";
       });
 
