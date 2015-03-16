@@ -56,7 +56,6 @@ var payment = (function (module) {
 module.init = function () {
 	$('#content').on('click', '#payment-submit', function () {
 		event.preventDefault();
-		debugger;
 		module.card_pay();
 	});
 };
