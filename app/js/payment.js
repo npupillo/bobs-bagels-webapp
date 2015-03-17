@@ -48,15 +48,9 @@ var payment = (function (module) {
 		}
 	}).done(function (data) {
 		console.log(data);
+		order.submitOrder();
 	}).fail(function (jqXHR, textStatus, errorThrown) {
 		console.log(jqXHR, textStatus, errorThrown);
-	});
-};
-
-module.init = function () {
-	$('#content').on('click', '#payment-submit', function () {
-		event.preventDefault();
-		module.card_pay();
 	});
 };
 
