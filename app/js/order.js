@@ -57,7 +57,9 @@ var order = (function (module) {
     $.ajaxPrefilter(function( options ) {
         options.headers = {};
         options.headers['AUTHORIZATION'] = "Token token=" + localStorage["authToken"];
-      });
+    });
+
+    var storeInfo = payment.checkStatus();
 
     $.ajax({
       url: 'http://localhost:3000/users/' + localStorage["authToken"] + '/orders',
@@ -69,13 +71,16 @@ var order = (function (module) {
           delivery_address_zipcode: localStorage["zipcode"],
           delivery_address_2: localStorage["streetTwo"],
           delivery_phone:  localStorage["phoneNumber"],
-          cart: localStorage['cart']
+          cart: localStorage['cart'],
+          return_customer: true,
+          store_info: storeInfo,
+          token: token
         }
       }
     }).done(function(data){
-      _makePayment(token);
+      console.log("fuck yeah");
+      // _makePayment(data, token);
     }).fail(function (jqXHR, textStatus, errorThrown) {
-      debugger;
       console.log(jqXHR, textStatus, errorThrown);
     });
   };
