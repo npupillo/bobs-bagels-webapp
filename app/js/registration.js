@@ -18,14 +18,12 @@ var registration = (function (module) {
 
 	module.loginSuccess = function (userData) {
 		localStorage.setItem('authToken', userData.token);
+    localStorage.setItem('customerId', userData.customer_id);
 		console.log('logged in!');
 		window.location.href = '/';
 	};
 
 	module.submitLogin = function (event) {
-		var $form;
-		$form = $(this);
-		debugger;
 		$.ajax({
 				url: 'http://localhost:3000/users/sign_in',
 				type: 'POST',
