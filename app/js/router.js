@@ -26,7 +26,6 @@ var router = (function (module) {
     },
     payments: function(){
       $('#content').empty().load('partials/payment-form.html');
-      payment.init();
       order.init();
     },
     deliveryOptions: function(){
