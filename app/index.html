@@ -33,7 +33,7 @@
 	<div class="header">
 
     <div id="logo-row" class="row">
-      <div id="logo-font-box" class="col-md-3">
+      <div id="logo-font-box" class="col-md-3 floatleft">
         <h1>
           Bob's<br>Bagels
         </h1>
@@ -45,7 +45,7 @@
       <div id="bagel_image" class="col-md-5"><img src="images/bagels_splash.jpg">
       </div>
 
-      <div id="soc_nav_container" class="col-md-3">
+      <div id="soc_nav_container" class="col-md-3 pull-right">
         <nav id="navsocial">
           <a href="#" class="rss">RSS</a>
           <a href="#" class="facebook">Facebook</a>
@@ -55,9 +55,9 @@
       </div>
     </div> <!-- row -->
 
-    <div id="navbar" class="floatclear">
+    <div id="navbar" class="pull-right">
       <!-- <ul class="nav nav-pills pull-right"> -->
-  		<ul id='nav' class="nav nav-pills pull-right">
+  		<ul id='nav' class="nav nav-pills">
   			<li class="nav_item"><a href="#">Home</a>
   			</li>
   			<li class="nav_item"><a href="#/about">About</a>
@@ -90,11 +90,11 @@
 		<div id='content'></div>
     </div>
 
-  <div class="subcontainer">
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from Team Turing</p>
-      </div>
+
+  <div class="footer">
+    <p><span class="glyphicon glyphicon-heart"></span> from Team Turing</p>
   </div>
+
 
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -131,8 +131,10 @@
     <script src="js/my-profile.js" type="text/javascript"></script>
     <script src="js/nav.js" type="text/javascript"></script>
     <script type="text/x-handlebars-template" id='menu-info'>
+
+    <div class="">
     {{#each products}}
-      <div id="item-{{id}}">
+      <div id="item-{{id}}" class="menu_items">
         <div class="menu-item">
           <h2 id="{{id}}name">{{name}}</h2>
           <span id='{{id}}price'>${{price}}</span>
@@ -188,6 +190,8 @@
         </form>
       </div>
     {{/each}}
+    </div>
+
     </script>
     <script type="text/x-handlebars-template" id='drink-render'>
     {{#each drinks}}
@@ -295,6 +299,7 @@
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <!-- endbuild -->
+
   </div> <!-- big-border -->
 </body>
 
