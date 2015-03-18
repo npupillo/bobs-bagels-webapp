@@ -20,7 +20,7 @@ var payment = (function (module) {
 	_stripeResponseHandler = function (status, response) {
 		console.log(response);
 
-			var $form = $('#payment-form');
+		var $form = $('#payment-form');
 
 		if (response.error) {
 			$form.find('.payment-errors').text(response.error.message);

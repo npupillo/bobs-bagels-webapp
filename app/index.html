@@ -128,14 +128,16 @@
     <script src="js/cart.js" type="text/javascript"></script>
     <script src="js/order.js" type="text/javascript"></script>
     <script src="js/registration.js" type="text/javascript"></script>
+    <script src="js/alacart.js" type="text/javascript"></script>
+    <script src="js/catering.js" type="text/javascript"></script>
     <script src="js/my-profile.js" type="text/javascript"></script>
     <script src="js/nav.js" type="text/javascript"></script>
     <script type="text/x-handlebars-template" id='menu-info'>
     {{#each products}}
       <div id="item-{{id}}">
         <div class="menu-item">
-          <h2 id="{{id}}name">{{name}}</h2>
-          <span id='{{id}}price'>${{price}}</span>
+          <h1 id="{{id}}name">{{name}}</h1>
+          <h2 id='{{id}}price'>${{price}}</h2>
         </div>
         <p id="{{id}}description">{{description}}</p>
         <form id="{{id}}">
@@ -194,7 +196,7 @@
       <div id="item-{{id}}">
         <div class="menu-item">
           <h4 id="{{id}}name">{{name}}</h4>
-          <span>${{price}}</span>
+          <span id='{{id}}price'>${{price}}</span>
         </div>
         <form id="{{id}}">
           <div class="form-row">
@@ -202,6 +204,37 @@
               <span>Quantity</span>
               <input type="number" name="quantity" id="{{id}}quantity" min="1" max="100" step="1" value="1">
             </label>
+          </div>
+          <button class='cart-submit' type="submit" >Add to Cart</button>
+        </form>
+      </div>
+    {{/each}}
+    </script>
+    <script type="text/x-handlebars-template" id='cater-menu'>
+    <h1>"Bob's Bagels will cater your events like a BOSS."</h1>
+    <h2> We do bagels the right way. Piping hot, freshly baked, and delivered right to your doorstep. Cater with us to keep any party, corporate event, luncheon, or breakfast popping in a jiffy!</h2>
+    {{#each products}}
+      <div id="item-{{id}}">
+        <div class="menu-item">
+          <h4 id="{{id}}name">{{name}}</h4>
+          <span id='{{id}}price'>${{price}}</span>
+        </div>
+        <form id="{{id}}">
+          <div class="form-row">
+            <label>
+              <span>Quantity</span>
+              <input type="number" name="quantity" id="{{id}}quantity" min="1" max="100" step="1" value="1">
+            </label>
+          </div>
+          <p>Bagel</p>
+          <div class="form-row">
+            <label>
+                <input type="radio" name="bagel" id="{{bagel.id}}" value="{{bagel.id}}" checked>{{bagel.bagel_type}}
+                {{#each otherBagels}}
+                  <input type="radio" name="bagel" id="{{id}}" value="{{id}}">{{bagel_type}}
+                {{/each}}
+            </label>
+
           </div>
           <button class='cart-submit' type="submit" >Add to Cart</button>
         </form>
@@ -236,6 +269,7 @@
     {{#order}}
       {{#data}}
         <h2>Delivery Cost: ${{delivery_cost}}</h2>
+        <h2>Extra Ingredients: ${{extras}}</h2>
         <h2>Subtotal: ${{subtotal}}</h2>
         <h2>Taxes: ${{taxes}}</h2>
         <h2>Total: ${{total}}</h2>
@@ -243,6 +277,25 @@
         <h1>Thank you for buying bagels from us!</h1>
       {{/data}}
     {{/order}}
+    </script>
+     <script type="text/x-handlebars-template" id='order-history-render'>
+      {{#orderHistory}}
+      <h1>Hi {{first_name}}! Thank you for being such a valuable customer. Here is your order history:</h1>
+        {{#each orders}}
+          {{#each cart}}
+            <h1>{{name}} (x{{quantity}})</h1>
+            <h3>{{price}} - {{description}}</h3>
+            <p>Ingredients: {{#each ingredients}} {{name}} {{/each}}</p>
+          {{/each}}
+          <h2>Delivery Cost: ${{delivery_cost}}</h2>
+          <h2>Extra Ingredients: ${{extras}}</h2>
+          <h2>Subtotal: ${{subtotal}}</h2>
+          <h2>Taxes: ${{taxes}}</h2>
+          <h2>Total: ${{total}}</h2>
+          <h2>Order Id: {{id}}</h2>
+          <h1>Thank you for buying bagels from us!</h1>
+        {{/each}}
+      {{/orderHistory}}
     </script>
 
 
