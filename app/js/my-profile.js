@@ -22,7 +22,8 @@ var profile = (function (module){
   module.getAjax = function(user_id){
     // debugger;
         $.ajax({
-          url: 'http://localhost:3000/users/' + localStorage['authToken'],
+          // url: 'http://localhost:3000/users/' + localStorage['authToken'],
+          url: 'http://localhost:3000/users/' + user_id,
           type: 'PATCH',
           dataType: 'JSON',
           data:

@@ -10,6 +10,10 @@ var registration = (function (module) {
 				first_name: $('#first-name').val(),
 				last_name: $('#last-name').val(),
 				email: $('#email').val(),
+				phone_number: $('#phone_number').val(),
+				address_1: $('#address_1').val(),
+				address_2: $('#address_2').val(),
+				address_zipcode: $('#address_zipcode').val(),
 				password: $('#password').val()}},
 			}).done(registration.loginSuccess).fail(registration.acceptFailure);
 
