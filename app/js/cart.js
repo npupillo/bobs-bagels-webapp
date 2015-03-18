@@ -29,8 +29,9 @@ var cart = (function (module) {
     }));
   };
 
-  module.cartIngredientRender = function(item){
-    var ingredients = $.grep(menu.ingredients, function(n){
+  module.cartIngredientRender = function(item, module){
+    debugger;
+    var ingredients = $.grep(module.ingredients, function(n){
      return item.ingredients.indexOf(n.id.toString()) > -1
     });
     item.ingredients = ingredients;
