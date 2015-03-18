@@ -15,6 +15,7 @@ var router = (function (module) {
       'catering': 'catering',
       'my-profile': 'myProfile',
       'about': 'about',
+      'cart': 'cart'
     },
     home: function(){
       $('#content').empty();
@@ -40,6 +41,10 @@ var router = (function (module) {
 		  $('#content').empty().load('partials/login-form.html');
         registration.init();
   		},
+    cart: function(){
+      cart.renderDetailedCart();
+      cart.init();
+      },
     catering: function(){
       $('#content').empty();
       $.ajax({
