@@ -54,7 +54,7 @@ var router = (function (module) {
       cart.init();
     },
     myProfile: function(){
-      $('#content').empty();
+      $('#content').empty().load('partials/my-profile.html');
 //       $.ajax({
 //         url: module.host + "/users/1",
 //         type: 'GET'
@@ -62,7 +62,7 @@ var router = (function (module) {
       profile.init();
     },
     about: function(){
-      $('#content').empty().load('partials/about.html');;
+      $('#content').empty().load('partials/about.html');
     }
   });
 
