@@ -19,8 +19,16 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   background: green;
 }
 
-.top-padding-10 {
+.padding-top-10 {
   padding-top: 10px;
+}
+
+.padding-right-20 {
+  padding-right: 20px;
+}
+
+.padding-bottom-20 {
+  padding-bottom: 20px;
 }
 
 .browsehappy {
@@ -79,6 +87,10 @@ body {
     /* margin-top: 10px; */
     margin-bottom: 5px;
   }
+}
+
+#edit_your_items {
+  font-weight: boldest;
 }
 
 /* Custom page footer */
@@ -182,8 +194,11 @@ h1 {
   min-height: 300px;
 }
 
-.menu_items {
-  max-width: 600px;
+.product-item {
+  // border-top: 1px solid #C7142A; //red
+}
+.menu_item-box {
+  max-width: 100px;
 }
 
 
