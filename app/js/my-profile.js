@@ -19,6 +19,38 @@ var profile = (function (module){
 
   }; // end module.handleForm
 
+  module.getOrders = function(user_id){
+    // debugger;
+    $.ajax({
+      url: 'http://localhost:3000/users/' + localStorage['authToken'],
+      type: 'GET',
+      dataType: 'JSON'
+    }).done(indexOrderHistory)
+    .fail(function(jqXHR, textStatus, errorThrown){
+      console.log(jqXHR, textStatus, errorThrown);
+    }); //end $.ajax()
+  };
+
+  indexOrderHistory = function(data){
+    if (data[0].orders.length < 1) {
+      $('#content').html("<h1>You haven't made any orders yet.You don't know what you're missing!</h1>")
+    } else {
+      renderOrderHistory(data);
+    };
+  };
+
+  renderOrderHistory = function(data){
+    data[0].orders.forEach(function(order){
+      order.cart = JSON.parse(order.cart);
+      order.cart.forEach(cart.cartIngredientRender);
+    });
+    console.log(data);
+    var template = Handlebars.compile($('#order-history-render').html());
+    $('#content').html(template({
+      orderHistory: data
+    }));
+  };
+
   module.getAjax = function(user_id){
         $.ajax({
           // url: 'http://localhost:3000/users/' + localStorage['authToken'],

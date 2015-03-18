@@ -39,9 +39,17 @@ var order = (function (module) {
   };
 
   var loginValidation = function(){
-    var $form = $('#payment-form');
-    if (localStorage["authToken"] === undefined ) {
-      $form.find('.payment-errors').text("You must be logged in to make a purchase");
+    var $form = $('#date-time-form');
+    if (localStorage["authToken"] == undefined ) {
+      $form.find('.delivery-errors').text("You must be logged in to make a purchase");
+    } else {
+      cartValidation();
+    };
+  };
+
+  var cartValidation = function(){
+    if (localStorage["cart"].length < 3 ) {
+      location.href = '/#/cart';
     } else {
       submitDeliveryInfo();
     };
@@ -86,7 +94,16 @@ var order = (function (module) {
 
   renderOrderSummary = function(data){
     var items = JSON.parse(data.data.cart);
-    items.forEach(cart.cartIngredientRender);
+
+    if ((data.data.type == "delivery") || (data.data.type == "pickup")){
+      items.forEach(function(item){
+        cart.cartIngredientRender(item, aLaCart);
+    });
+    } else {
+      items.forEach(function(item){
+        cart.cartIngredientRender(item, catering);
+      });
+    };
     var template = Handlebars.compile($('#order-summary-render').html());
     $('#content').html(template({
       items: items,
