@@ -57,7 +57,8 @@
 
     <div id="navbar" class="floatclear">
       <!-- <ul class="nav nav-pills pull-right"> -->
-  		<ul class="nav nav-pills pull-right">
+  		<ul id='nav' class="nav nav-pills pull-right">
+        <li class="nav_item"><a href="#/cart"><div id="cart"></div></a>
   			<li class="nav_item"><a href="#">Home</a>
   			</li>
   			<li class="nav_item"><a href="#/about">About</a>
@@ -74,7 +75,9 @@
   			</li>
   			<li class="nav_item"><a href="#/delivery-options">Checkout</a>
   			</li>
-  			<div id="cart"></div>
+        <li class="nav_item"><a href="#/my-profile">My Profile</a>
+        </li>
+
   		</ul>
 
 
@@ -134,7 +137,7 @@
           <h2 id="{{id}}name">{{name}}</h2>
           <span id='{{id}}price'>${{price}}</span>
         </div>
-        <p>{{description}}</p>
+        <p id="{{id}}description">{{description}}</p>
         <form id="{{id}}">
           <div class="form-row">
             <label>
@@ -207,23 +210,41 @@
     </script>
 
     <script type="text/x-handlebars-template" id='cart-render'>
-    {{#each orderItem}}
-      <div id="cart-{{id}}">
-        <p>{{name}}</p>
-        <p>x{{quantity}}</p>
-        <button value="{{id}}" class='.remove-cart' id="remove-{{id}}">Remove from Cart</button>
-      </div>
-    {{/each}}
+    {{#cart}}
+      Items: {{quantity}} - Base Total: ${{total}}
+    {{/cart}}
+    </script>
+    <script type="text/x-handlebars-template" id='detailed-cart-render'>
+      {{#each orderItem}}
+        <div id="cart-{{id}}">
+          <h1>{{name}} (x{{quantity}})</h1>
+          <h3>{{price}} - {{description}}</h3>
+          <p>Ingredients: {{#each ingredients}} {{name}} {{/each}}</p>
+          <button value="{{id}}" class='remove-cart' id="remove-{{id}}">Remove from Cart</button>
+        </div>
+      {{/each}}
     </script>
 
-    <script type="text/x-handlebars-template" id='order_summary_render-render'>
+    <script type="text/x-handlebars-template" id='order-summary-render'>
+    <h1>Congratulations on making an order!</h1>
+    <h2>The bagels are in the oven</h2>
+    {{#each items}}
+      <h1>{{name}} (x{{quantity}})</h1>
+      <h3>{{price}} - {{description}}</h3>
+      <p>Ingredients: {{#each ingredients}} {{name}} {{/each}}</p>
+    {{/each}}
     {{#order}}
-      {{#each order_items}}
-        <p>product.name</p>
-      {{/each}}
-      <p>${{total}}</p>
+      {{#data}}
+        <h2>Delivery Cost: ${{delivery_cost}}</h2>
+        <h2>Subtotal: ${{subtotal}}</h2>
+        <h2>Taxes: ${{taxes}}</h2>
+        <h2>Total: ${{total}}</h2>
+        <h2>Order Id: {{id}}</h2>
+        <h1>Thank you for buying bagels from us!</h1>
+      {{/data}}
     {{/order}}
     </script>
+
 
   <!-- HANDLEBARS TEMPLATE: EDIT USER PROFILE -->
   <script id="user_profile_template" type="text/x-handlebars-template">

@@ -78,23 +78,38 @@ var order = (function (module) {
         }
       }
     }).done(function(data){
-      console.log("fuck yeah");
-      // _makePayment(data, token);
+      cart.cartReset();
+      renderOrderSummary(data);
     }).fail(function (jqXHR, textStatus, errorThrown) {
       console.log(jqXHR, textStatus, errorThrown);
     });
   };
 
+
+
+  renderOrderSummary = function(data){
+    var items = JSON.parse(data.data.cart);
+    items.forEach(cart.cartIngredientRender);
+    var template = Handlebars.compile($('#order-summary-render').html());
+    $('#content').html(template({
+      items: items,
+      order: data
+    }));
+  };
+
   module.init = function(){
     $('#content').on('click', '#delivery', function(){
+      event.preventDefault();
       $('#delivery-add').empty().load('partials/delivery-address-form.html');
     });
 
     $('#content').on('click', '#pickup', function(){
+      event.preventDefault();
       $('#delivery-add').empty();
     });
 
     $('#content').on('click', '#delivery-submit', function(){
+      event.preventDefault();
       deliveryValidation();
     });
 
