@@ -7,6 +7,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   clear: both;
 }
 
+.redbox {
+  border: 1px solid red;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -18,39 +22,46 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 body {
   padding-top: 0px;
   padding-bottom: 20px;
+  background: black;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  /* border: 1px solid red; */
-  padding-left: 15px;
-  padding-right: 15px;
+#big-border {
+  margin-top: 20px;
+  background: white;
+  padding: 5px;
 }
 
 /* Custom page header */
 .header {
-  /* border: 1px solid red; */
   border-bottom: 5px double #C7142A;
-  /* background: #678C55; //green */
-  background-image: url("../images/header_bg_med.png");
 
-  /* Make the masthead heading the same height as the navigation */
+  #logo-row {
+    padding-top: 20px;
+  }
+
   #logo-font-box {
-    /* border: 1px solid red; */
+    background-image: url("../images/header_bg_med.png");
+    border: 5px solid #C7142A;
+    border-radius: 30px;
+    margin: 20px;
+    text-align: center;
     float: left;
-    padding: 0px 0px 0px 50px;
+    padding: 0px 0px 0px 0px;
     margin-top: 0;
     margin-bottom: 0;
     line-height: 40px;
     padding-bottom: 19px;
+    width: 250px;
   }
 
   #logo-mini-box {
-    /* border: 1px solid red; */
     padding: 0px 0px 0px 70px;
     margin: 0;
+  }
+  #bagel_image {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
   }
 }
 
@@ -70,7 +81,6 @@ h1 {
 }
 
 #navbar {
-  /*border: 1px solid red;*/
   height: 15px;
 
   padding-right: 20px;
@@ -98,15 +108,11 @@ h1 {
 
 /* Social Nav */
 #soc_nav_container {
-  /* border: 1px solid red; */
-  padding: 30px 20px 0px 0px;
-  /* float: right; */
+  padding-top: 5px;
 }
 
 
 #navsocial a{
-  /* border: 1px solid red; */
-
   display: block;
   float: right;
   height: 48px;
@@ -120,33 +126,33 @@ h1 {
 }
 
 #navsocial a.gmail {
-  background-position: 0 -48px;
+  background-position: 0 0;
 }
 
 #navsocial a.twitter {
-  background-position: -48px -48px;
-}
-
-#navsocial a.facebook {
-  background-position: -97px -48px;
-}
-#navsocial a.rss {
-  background-position: -146px -48px;
-}
-
-#navsocial a.gmail:hover {
-  background-position: 0 0  ;
-}
-
-#navsocial a.twitter:hover {
   background-position: -48px 0;
 }
 
-#navsocial a.facebook:hover {
+#navsocial a.facebook {
   background-position: -97px 0;
 }
-#navsocial a.rss:hover {
+#navsocial a.rss {
   background-position: -146px 0;
+}
+
+#navsocial a.gmail:hover {
+  background-position: 0 -48px;
+}
+
+#navsocial a.twitter:hover {
+  background-position: -48px -48px;
+}
+
+#navsocial a.facebook:hover {
+  background-position: -97px -48px;
+}
+#navsocial a.rss:hover {
+  background-position: -146px -48px;
 }
 
 .container-narrow > hr {
@@ -172,91 +178,22 @@ h1 {
 }
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+// @media screen and (min-width: 768px) {
+//   .container {
+//     max-width: 730px;
+//   }
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-    clear: float;
-  }
+//   /* Remove the padding we set earlier */
+//   .header,
+//   .marketing,
+//   .footer {
+//     padding-left: 0;
+//     padding-right: 0;
+//     clear: float;
+//   }
 
-  /* Space out the masthead */
-  .header {
-    /* border: 1px solid red; */
-    margin-bottom: 30px;
-  }
-
-  /* Remove the bottom border on the jumbotron for visual effect */
-  /*  .jumbotron {
-    border-bottom: 0;
-  } */
-}
-
-/* Responsive: Portrait tablets and below */
-@media screen and (max-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-
-  h1 {
-      font-size: 40px;
-  }
-
-
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-    clear: float;
-  }
-
-  /* Space out the masthead */
-  .header {
-    /* border: 1px solid red; */
-    margin-bottom: 30px;
-  }
-
-  /* Remove the bottom border on the jumbotron for visual effect */
-  /*  .jumbotron {
-    border-bottom: 0;
-  } */
-}
-
-/* Responsive: Portrait iPhone4 and up */
-@media screen and (max-width: 480px) {
-  .container {
-    max-width: 456px;
-  }
-
-  h1 {
-      font-size: 30px;
-  }
-
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-    clear: float;
-  }
-
-  /* Space out the masthead */
-  .header {
-    /* border: 1px solid red; */
-    margin-bottom: 30px;
-  }
-
-  /* Remove the bottom border on the jumbotron for visual effect */
-  /* .jumbotron {
-    border-bottom: 0;
-  } */
-}
+//   /* Space out the masthead */
+//   .header {
+//     margin-bottom: 30px;
+//   }
+// }
