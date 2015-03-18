@@ -31,7 +31,6 @@
 
 <div id="big-border">
 	<div class="header">
-
     <div id="logo-row" class="row">
       <div id="logo-font-box" class="col-md-3 floatleft">
         <h1>
@@ -74,7 +73,10 @@
   			</li>
   			<li class="nav_item"><a href="#/delivery-options">Checkout</a>
   			</li>
-        <li class="nav_item"><a href="#/cart"><div id="cart"></div></a>
+        <li class="nav_item">
+            <a href="#/cart">Edit Your Items
+              <div id="cart"></div>
+            </a>
         </li>
 
   		</ul>
@@ -129,14 +131,12 @@
     <script src="js/order.js" type="text/javascript"></script>
     <script src="js/registration.js" type="text/javascript"></script>
     <script src="js/my-profile.js" type="text/javascript"></script>
-    <script src="js/nav.js" type="text/javascript"></script>
     <script type="text/x-handlebars-template" id='menu-info'>
 
-    <div class="">
     {{#each products}}
-      <div id="item-{{id}}" class="menu_items">
+      <div id="item-{{id}}" class="product-item floatleft col-md-6">
         <div class="menu-item">
-          <h2 id="{{id}}name">{{name}}</h2>
+          <h3 id="{{id}}name">{{name}}</h3>
           <span id='{{id}}price'>${{price}}</span>
         </div>
         <p id="{{id}}description">{{description}}</p>
@@ -190,12 +190,15 @@
         </form>
       </div>
     {{/each}}
-    </div>
 
     </script>
+
     <script type="text/x-handlebars-template" id='drink-render'>
+    <div class="clearfloat">
+    <h3>Beverages</h3>
+
     {{#each drinks}}
-      <div id="item-{{id}}">
+      <div id="item-{{id}}" class="floatleft padding-right-20 padding-bottom-20 col-sm-3">
         <div class="menu-item">
           <h4 id="{{id}}name">{{name}}</h4>
           <span>${{price}}</span>
@@ -211,17 +214,19 @@
         </form>
       </div>
     {{/each}}
+    </div>
     </script>
 
     <script type="text/x-handlebars-template" id='cart-render'>
     {{#cart}}
-      Items: {{quantity}} - Base Total: ${{total}}
+      Items: {{quantity}}<br>
+      Base Total: ${{total}}
     {{/cart}}
     </script>
     <script type="text/x-handlebars-template" id='detailed-cart-render'>
       {{#each orderItem}}
         <div id="cart-{{id}}">
-          <h1>{{name}} (x{{quantity}})</h1>
+          <h3>{{name}} (x{{quantity}})</h3>
           <h3>{{price}} - {{description}}</h3>
           <p>Ingredients: {{#each ingredients}} {{name}} {{/each}}</p>
           <button value="{{id}}" class='remove-cart' id="remove-{{id}}">Remove from Cart</button>
