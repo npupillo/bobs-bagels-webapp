@@ -40,7 +40,7 @@ var cart = (function (module) {
   module.renderDetailedCart = function(){
       var data = JSON.parse(localStorage['cart']);
       if (data.length < 1){
-        $('#content').html("<h1>You haven't added anything to your cart yet. Get shopping you cheapskate!</h1>");
+        $('#content').html("<h3>You haven't added anything to your cart yet. Get shopping you cheapskate!</h3>");
       } else {
         data.forEach(cart.cartIngredientRender);
         var template = Handlebars.compile($('#detailed-cart-render').html());

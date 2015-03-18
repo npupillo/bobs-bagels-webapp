@@ -1,6 +1,7 @@
 var registration = (function (module) {
 
 	var authToken;
+	var customerId;
 
 	module.submitRegistration = function () {
 		$.ajax({
@@ -10,6 +11,10 @@ var registration = (function (module) {
 				first_name: $('#first-name').val(),
 				last_name: $('#last-name').val(),
 				email: $('#email').val(),
+				phone_number: $('#phone_number').val(),
+				address_1: $('#address_1').val(),
+				address_2: $('#address_2').val(),
+				address_zipcode: $('#address_zipcode').val(),
 				password: $('#password').val()}},
 			}).done(registration.loginSuccess).fail(registration.acceptFailure);
 
@@ -18,7 +23,7 @@ var registration = (function (module) {
 
 	module.loginSuccess = function (userData) {
 		localStorage.setItem('authToken', userData.token);
-    localStorage.setItem('customerId', userData.customer_id);
+    	localStorage.setItem('customerId', userData.customer_id);
 		console.log('logged in!');
 		window.location.href = '/';
 	};

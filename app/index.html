@@ -31,9 +31,8 @@
 
 <div id="big-border">
 	<div class="header">
-
     <div id="logo-row" class="row">
-      <div id="logo-font-box" class="col-md-3">
+      <div id="logo-font-box" class="col-md-3 floatleft">
         <h1>
           Bob's<br>Bagels
         </h1>
@@ -42,10 +41,10 @@
         </div>
       </div>
 
-      <div id="bagel_image" class="col-md-4"><img src="images/bagels_splash.jpg">
+      <div id="bagel_image" class="col-md-5"><img src="images/bagels_splash.jpg">
       </div>
 
-      <div id="soc_nav_container" class="col-md-4">
+      <div id="soc_nav_container" class="col-md-3 pull-right">
         <nav id="navsocial">
           <a href="#" class="rss">RSS</a>
           <a href="#" class="facebook">Facebook</a>
@@ -55,10 +54,9 @@
       </div>
     </div> <!-- row -->
 
-    <div id="navbar" class="floatclear">
+    <div id="navbar" class="pull-right">
       <!-- <ul class="nav nav-pills pull-right"> -->
-  		<ul id='nav' class="nav nav-pills pull-right">
-        <li class="nav_item"><a href="#/cart"><div id="cart"></div></a>
+  		<ul id='nav' class="nav nav-pills">
   			<li class="nav_item"><a href="#">Home</a>
   			</li>
   			<li class="nav_item"><a href="#/about">About</a>
@@ -75,7 +73,10 @@
   			</li>
   			<li class="nav_item"><a href="#/delivery-options">Checkout</a>
   			</li>
-        <li class="nav_item"><a href="#/my-profile">My Profile</a>
+        <li class="nav_item">
+            <a href="#/cart">Edit Your Items
+              <div id="cart"></div>
+            </a>
         </li>
 
   		</ul>
@@ -89,12 +90,13 @@
 
 	<div class="container">
 		<div id='content'></div>
-
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from Team Turing</p>
-      </div>
-
     </div>
+
+
+  <div class="footer">
+    <p><span class="glyphicon glyphicon-heart"></span> from Team Turing</p>
+  </div>
+
 
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -131,13 +133,13 @@
     <script src="js/alacart.js" type="text/javascript"></script>
     <script src="js/catering.js" type="text/javascript"></script>
     <script src="js/my-profile.js" type="text/javascript"></script>
-    <script src="js/nav.js" type="text/javascript"></script>
     <script type="text/x-handlebars-template" id='menu-info'>
+
     {{#each products}}
-      <div id="item-{{id}}">
+      <div id="item-{{id}}" class="product-item floatleft col-md-6">
         <div class="menu-item">
-          <h1 id="{{id}}name">{{name}}</h1>
-          <h2 id='{{id}}price'>${{price}}</h2>
+          <h3 id="{{id}}name">{{name}}</h3>
+          <span id='{{id}}price'>${{price}}</span>
         </div>
         <p id="{{id}}description">{{description}}</p>
         <form id="{{id}}">
@@ -190,10 +192,15 @@
         </form>
       </div>
     {{/each}}
+
     </script>
+
     <script type="text/x-handlebars-template" id='drink-render'>
+    <div class="clearfloat">
+    <h3>Beverages</h3>
+
     {{#each drinks}}
-      <div id="item-{{id}}">
+      <div id="item-{{id}}" class="floatleft padding-right-20 padding-bottom-20 col-sm-3">
         <div class="menu-item">
           <h4 id="{{id}}name">{{name}}</h4>
           <span id='{{id}}price'>${{price}}</span>
@@ -240,12 +247,7 @@
         </form>
       </div>
     {{/each}}
-    </script>
-
-    <script type="text/x-handlebars-template" id='cart-render'>
-    {{#cart}}
-      Items: {{quantity}} - Base Total: ${{total}}
-    {{/cart}}
+    </div>
     </script>
     <script type="text/x-handlebars-template" id='detailed-cart-render'>
       {{#each orderItem}}
@@ -256,27 +258,6 @@
           <button value="{{id}}" class='remove-cart' id="remove-{{id}}">Remove from Cart</button>
         </div>
       {{/each}}
-    </script>
-
-    <script type="text/x-handlebars-template" id='order-summary-render'>
-    <h1>Congratulations on making an order!</h1>
-    <h2>The bagels are in the oven</h2>
-    {{#each items}}
-      <h1>{{name}} (x{{quantity}})</h1>
-      <h3>{{price}} - {{description}}</h3>
-      <p>Ingredients: {{#each ingredients}} {{name}} {{/each}}</p>
-    {{/each}}
-    {{#order}}
-      {{#data}}
-        <h2>Delivery Cost: ${{delivery_cost}}</h2>
-        <h2>Extra Ingredients: ${{extras}}</h2>
-        <h2>Subtotal: ${{subtotal}}</h2>
-        <h2>Taxes: ${{taxes}}</h2>
-        <h2>Total: ${{total}}</h2>
-        <h2>Order Id: {{id}}</h2>
-        <h1>Thank you for buying bagels from us!</h1>
-      {{/data}}
-    {{/order}}
     </script>
      <script type="text/x-handlebars-template" id='order-history-render'>
       {{#orderHistory}}
@@ -333,22 +314,109 @@
       </div>
     {{/user}}
   </script>
-
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
-
-        <!-- build:js({app,.tmp}) scripts/main.js -->
-        <!-- endbuild -->
   </div> <!-- big-border -->
+		<script type="text/x-handlebars-template" id='cart-render'>
+			{{#cart}} Items: {{quantity}} - Base Total: ${{total}} {{/cart}}
+		</script>
+
+		<script type="text/x-handlebars-template" id='order-summary-render'>
+
+			<h1>Congratulations on making an order!</h1>
+			<h2>The bagels are in the oven</h2> {{#each items}}
+			<h1>{{name}} (x{{quantity}})</h1>
+			<h3>{{price}} - {{description}}</h3>
+			<p>Ingredients: {{#each ingredients}} {{name}} {{/each}}</p>
+			{{/each}} {{#order}} {{#data}}
+			<h2>Delivery Cost: ${{delivery_cost}}</h2>
+			<h2>Subtotal: ${{subtotal}}</h2>
+			<h2>Taxes: ${{taxes}}</h2>
+			<h2>Total: ${{total}}</h2>
+			<h2>Order Id: {{id}}</h2>
+			<h1>Thank you for buying bagels from us!</h1> {{/data}} {{/order}}
+		</script>
+
+		<script type="text/x-handlebars-template" id='user-pay-render'>
+			<div>
+				{{#each data}}
+					<li>name: {{name}}</li>
+					<li>address: {{address_line1}}
+						<br> {{address_line2}}
+					</li>
+					<li>city: {{address_city}}</li>
+					<li>zip: {{address_zip}}</li>
+					<li>brand: {{brand}}</li>
+					<li>expiration date: {{exp_month}}/{{exp_year}}</li>
+					<li>type: {{type}}</li>
+					<li>card number: **** **** **** {{last4}}</li>
+				<button type="submit" id="delete_card">delete this card</button>
+				{{/each}}
+				<br>
+				<button type="submit" id="add_card">add card</button>
+				</br>
+			</div>
+		</script>
+
+		<!-- HANDLEBARS TEMPLATE: EDIT USER PROFILE -->
+		<script id="user_profile_template" type="text/x-handlebars-template">
+			{{#user}}
+			<h1>User Profile:</h1>
+			<div id=user-{{this.id}}>
+					<li>First Name: {{first_name}}</li>
+					<li>Last Name: {{last_name}}</li>
+					<li>Email: {{email}}</li>
+					<li>Phone Number: {{phone_number}}</li>
+					<li>Address 1: {{address_1}}</li>
+					<li>Address 2: {{address_2}}</li>
+					<li>Zipcode: {{address_zipcode}}</li>
+				<button id=edit-profile-b-{{this.id}} class=edit-profile>Edit Profile</button>
+				</div>
+
+				<form id="edit-profile-form">
+					First Name:
+					<input type=text id=user-first-name-field value="{{first_name}}" />
+					<br> Last Name:
+					<input type=text id=user-last-name-field value="{{last_name}}" />
+					<br> Email:
+					<input type=text id=user-email-field value="{{email}}" />
+					<br> Phone Number:
+					<input type=text id=user-phone-field value="{{phone_number}}" />
+					<br> Address 1:
+					<input type=text id=user-address-1-field value="{{address_1}}" />
+					<br> Address 2:
+					<input type=text id=user-address-2-field value="{{address_2}}" />
+					<br> Zipcode:
+					<input type=text id=user-zipcode-field value="{{address_zipcode}}" />
+					<p>
+
+						<button id='edit-profile-submit' type="submit">Save Profile</button>
+						<button id='edit-profile-cancel' type="submit">Cancel</button>
+
+				</form>
+			{{/user}}
+		</script>
+
+
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+
+		<script>
+			(function (b, o, i, l, e, r) {
+				b.GoogleAnalyticsObject = l;
+				b[l] || (b[l] =
+					function () {
+						(b[l].q = b[l].q || []).push(arguments)
+					});
+				b[l].l = +new Date;
+				e = o.createElement(i);
+				r = o.getElementsByTagName(i)[0];
+				e.src = '//www.google-analytics.com/analytics.js';
+				r.parentNode.insertBefore(e, r)
+			}(window, document, 'script', 'ga'));
+			ga('create', 'UA-XXXXX-X');
+			ga('send', 'pageview');
+		</script>
+
+		<!-- build:js({app,.tmp}) scripts/main.js -->
+		<!-- endbuild -->
 </body>
 
 </html>

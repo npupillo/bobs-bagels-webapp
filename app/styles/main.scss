@@ -7,8 +7,28 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   clear: both;
 }
 
+.floatleft {
+  float: left;
+}
+
+/* Use redbox to see outlines of elements for development */
 .redbox {
   border: 1px solid red;
+}
+.greenfill {
+  background: green;
+}
+
+.padding-top-10 {
+  padding-top: 10px;
+}
+
+.padding-right-20 {
+  padding-right: 20px;
+}
+
+.padding-bottom-20 {
+  padding-bottom: 20px;
 }
 
 .browsehappy {
@@ -20,12 +40,15 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 /* Space out content a bit */
 body {
+  margin: 0 auto;
   padding-top: 0px;
   padding-bottom: 20px;
-  background: black;
+  border-top: 20px solid black;
 }
 
 #big-border {
+  max-width: 1100px;
+  margin: 0 auto;
   margin-top: 20px;
   background: white;
   padding: 5px;
@@ -34,9 +57,11 @@ body {
 /* Custom page header */
 .header {
   border-bottom: 5px double #C7142A;
+  padding-bottom: 20px;
+
 
   #logo-row {
-    padding-top: 20px;
+    padding-top: 5px;
   }
 
   #logo-font-box {
@@ -45,10 +70,9 @@ body {
     border-radius: 30px;
     margin: 20px;
     text-align: center;
-    float: left;
     padding: 0px 0px 0px 0px;
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 5px;
     line-height: 40px;
     padding-bottom: 19px;
     width: 250px;
@@ -60,30 +84,39 @@ body {
   }
   #bagel_image {
     text-align: center;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     margin-bottom: 5px;
   }
 }
 
+#edit_your_items {
+  font-weight: boldest;
+}
+
 /* Custom page footer */
 .footer {
-  padding-top: 19px;
+  padding-top: 20px;
+  padding-bottom: 30px;
   color: #777;
   border-top: 1px solid #e5e5e5;
 }
 
-h1 {
+h1,h2,h3 {
     font-family: 'Pacifico', cursive;
-    /* color: #262D40; */
+    color: #2D365A; //blue
+}
+
+h1 {
     font-size: 50px;
     font-weight: boldest;
     color: #2D365A;
 }
 
-#navbar {
-  height: 15px;
 
+#navbar {
   padding-right: 20px;
+  width: 90%;
+  max-width: max-content;
 }
 .nav-pills>li {
   border-radius: 20px;
@@ -91,15 +124,15 @@ h1 {
 
 /* nav pill color - inactive */
 .nav-pills>li>a {
-  background-color: #C7142A;
+  background-color: white;
+  border: 2px solid #C7142A; //red
   color: #000;
+
 }
 
 /* nav pill color - hover */
 .nav-pills>li>a:hover {
-  background-color: #2D365A;
-  color: #FFF;
-
+  border: 2px solid #2D365A; //blue
 }
 
 .nav_item {
@@ -109,6 +142,7 @@ h1 {
 /* Social Nav */
 #soc_nav_container {
   padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 
@@ -154,28 +188,19 @@ h1 {
 #navsocial a.rss:hover {
   background-position: -146px -48px;
 }
-
-.container-narrow > hr {
-  margin: 30px 0;
+.container {
+  margin-top: 40px;
+  padding-bottom: 50px;
+  min-height: 300px;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-  }
+.product-item {
+  // border-top: 1px solid #C7142A; //red
+}
+.menu_item-box {
+  max-width: 100px;
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-  p + h4 {
-    margin-top: 28px;
-  }
-}
 
 /* Responsive: Portrait tablets and up */
 // @media screen and (min-width: 768px) {

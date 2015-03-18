@@ -35,12 +35,7 @@ var order = (function (module) {
       localStorage["streetOne"] = $('#street-1').val();
       localStorage["streetTwo"] = $('#street-2').val();
       localStorage["phoneNumber"] = $('#phone-number').val();
-      localStorage["type"] = $('#phone-number').val();
-      if(localStorage['customerId'] != undefined) {
-        location.href = '/#/payments';
-      } else {
-        payment.payment_type();
-      };
+      payment.paymentType();
   };
 
   var loginValidation = function(){
@@ -69,6 +64,7 @@ var order = (function (module) {
     });
 
     var storeInfo = payment.checkStatus();
+//	var returnCustomerStatus = payment.getReturnCustomerStatus();
 
     $.ajax({
       url: 'http://localhost:3000/users/' + localStorage["authToken"] + '/orders',
@@ -81,9 +77,9 @@ var order = (function (module) {
           delivery_address_2: localStorage["streetTwo"],
           delivery_phone:  localStorage["phoneNumber"],
           cart: localStorage['cart'],
-          return_customer: true,
           store_info: storeInfo,
-          token: token
+          token: token,
+		  customer_id: localStorage['customerId']
         }
       }
     }).done(function(data){
@@ -116,25 +112,30 @@ var order = (function (module) {
   };
 
   module.init = function(){
-    $('#content').on('click', '#delivery', function(){
+    $('#content').on('click', '#delivery', function(event){
       event.preventDefault();
       $('#delivery-add').empty().load('partials/delivery-address-form.html');
     });
 
-    $('#content').on('click', '#pickup', function(){
+    $('#content').on('click', '#pickup', function(event){
       event.preventDefault();
       $('#delivery-add').empty();
     });
 
-    $('#content').on('click', '#delivery-submit', function(){
+    $('#content').on('click', '#delivery-submit', function(event){
       event.preventDefault();
       deliveryValidation();
+	  cart.renderDetailedCart();
     });
 
     $('#content').on('click', '#payment-submit', function(event){
       event.preventDefault();
-      payment.card_pay();
+      payment.cardPay();
     });
+	$('#content').on('click', '#user-pay', function(event){
+		event.preventDefault();
+		order.submitOrder();
+  	});
   };
 
 

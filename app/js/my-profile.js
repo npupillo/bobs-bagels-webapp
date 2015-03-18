@@ -52,9 +52,9 @@ var profile = (function (module){
   };
 
   module.getAjax = function(user_id){
-    // debugger;
         $.ajax({
-          url: 'http://localhost:3000/users/' + localStorage['authToken'],
+          // url: 'http://localhost:3000/users/' + localStorage['authToken'],
+          url: 'http://localhost:3000/users/' + user_id,
           type: 'PATCH',
           dataType: 'JSON',
           data:
@@ -112,10 +112,52 @@ var profile = (function (module){
       }).fail(function(jqXHR, textStatus, errorThrow) {
         console.log(jqXHR, textStatus, errorThrow);
       });
-
+	 profile.getCustomerInfo();
     }; //end module.init
 
+	module.renderUserPaymentInfo = function (response) {
+		var responseToString = JSON.stringify(response);
+		response = responseToString.replace(/\s/g, "_");
+		response = JSON.parse(responseToString);
+		
+		var cardInfo = response.data
+		var template = Handlebars.compile($('#user-pay-render').html());
+		$('#content').append(template({
+			data: cardInfo,
+			id: cardInfo.id,
+			name: cardInfo.name,
+			address_city: cardInfo.address_city,
+			address_country: cardInfo.address_country,
+			address_line1: cardInfo.address_line1,
+			address_line2: cardInfo.address_line2,
+			address_zip: cardInfo.address_zip,
+			brand: cardInfo.brand,
+			exp_month: cardInfo.exp_month,
+			exp_year: cardInfo.exp_year,
+			type: cardInfo.funding,
+			last4: cardInfo.last4
+		}));
+	};
 
+	module.getCustomerInfo = function () {
+		$.ajax({
+			url: 'http://localhost:3000/users/retrieve_card',
+			type: 'POST',
+			data: {
+				user: {
+					token: localStorage['authToken']
+				}
+			}
+		}).done(function (response) {
+			console.log(response);
+//			payment.getReturnCustomerStatus(response);
+			profile.renderUserPaymentInfo(response);
+		}).fail(function (jqXHR, textStatus, errorThrown) {
+			console.log(jqXHR, textStatus, errorThrown);
+		});
+	};
+	
+	
 return module;
 
 })(profile || {});
