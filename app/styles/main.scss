@@ -7,6 +7,22 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   clear: both;
 }
 
+.floatleft {
+  float: left;
+}
+
+/* Use redbox to see outlines of elements for development */
+.redbox {
+  border: 1px solid red;
+}
+.greenfill {
+  background: green;
+}
+
+.top-padding-10 {
+  padding-top: 10px;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -16,64 +32,79 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 /* Space out content a bit */
 body {
+  margin: 0 auto;
   padding-top: 0px;
   padding-bottom: 20px;
+  border-top: 20px solid black;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  /* border: 1px solid red; */
-  padding-left: 15px;
-  padding-right: 15px;
+#big-border {
+  max-width: 1100px;
+  margin: 0 auto;
+  margin-top: 20px;
+  background: white;
+  padding: 5px;
 }
 
 /* Custom page header */
 .header {
-  /* border: 1px solid red; */
   border-bottom: 5px double #C7142A;
-  /* background: #678C55; //green */
-  background-image: url("../images/header_bg_med.png");
+  padding-bottom: 20px;
 
-  /* Make the masthead heading the same height as the navigation */
+
+  #logo-row {
+    padding-top: 5px;
+  }
+
   #logo-font-box {
-    /* border: 1px solid red; */
-    float: left;
-    padding: 0px 0px 0px 50px;
+    background-image: url("../images/header_bg_med.png");
+    border: 5px solid #C7142A;
+    border-radius: 30px;
+    margin: 20px;
+    text-align: center;
+    padding: 0px 0px 0px 0px;
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 5px;
     line-height: 40px;
     padding-bottom: 19px;
+    width: 250px;
   }
 
   #logo-mini-box {
-    /* border: 1px solid red; */
     padding: 0px 0px 0px 70px;
     margin: 0;
+  }
+  #bagel_image {
+    text-align: center;
+    /* margin-top: 10px; */
+    margin-bottom: 5px;
   }
 }
 
 /* Custom page footer */
 .footer {
-  padding-top: 19px;
+  padding-top: 20px;
+  padding-bottom: 30px;
   color: #777;
   border-top: 1px solid #e5e5e5;
 }
 
-h1 {
+h1,h2,h3 {
     font-family: 'Pacifico', cursive;
-    /* color: #262D40; */
+    color: #2D365A; //blue
+}
+
+h1 {
     font-size: 50px;
     font-weight: boldest;
     color: #2D365A;
 }
 
-#navbar {
-  /*border: 1px solid red;*/
-  height: 15px;
 
+#navbar {
   padding-right: 20px;
+  width: 90%;
+  max-width: max-content;
 }
 .nav-pills>li {
   border-radius: 20px;
@@ -81,15 +112,15 @@ h1 {
 
 /* nav pill color - inactive */
 .nav-pills>li>a {
-  background-color: #C7142A;
+  background-color: white;
+  border: 2px solid #C7142A; //red
   color: #000;
+
 }
 
 /* nav pill color - hover */
 .nav-pills>li>a:hover {
-  background-color: #2D365A;
-  color: #FFF;
-
+  border: 2px solid #2D365A; //blue
 }
 
 .nav_item {
@@ -98,15 +129,12 @@ h1 {
 
 /* Social Nav */
 #soc_nav_container {
-  /* border: 1px solid red; */
-  padding: 30px 20px 0px 0px;
-  /* float: right; */
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 
 #navsocial a{
-  /* border: 1px solid red; */
-
   display: block;
   float: right;
   height: 48px;
@@ -120,143 +148,62 @@ h1 {
 }
 
 #navsocial a.gmail {
-  background-position: 0 -48px;
+  background-position: 0 0;
 }
 
 #navsocial a.twitter {
-  background-position: -48px -48px;
-}
-
-#navsocial a.facebook {
-  background-position: -97px -48px;
-}
-#navsocial a.rss {
-  background-position: -146px -48px;
-}
-
-#navsocial a.gmail:hover {
-  background-position: 0 0  ;
-}
-
-#navsocial a.twitter:hover {
   background-position: -48px 0;
 }
 
-#navsocial a.facebook:hover {
+#navsocial a.facebook {
   background-position: -97px 0;
 }
-#navsocial a.rss:hover {
+#navsocial a.rss {
   background-position: -146px 0;
 }
 
-.container-narrow > hr {
-  margin: 30px 0;
+#navsocial a.gmail:hover {
+  background-position: 0 -48px;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-  }
+#navsocial a.twitter:hover {
+  background-position: -48px -48px;
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-  p + h4 {
-    margin-top: 28px;
-  }
+#navsocial a.facebook:hover {
+  background-position: -97px -48px;
 }
+#navsocial a.rss:hover {
+  background-position: -146px -48px;
+}
+.container {
+  margin-top: 40px;
+  padding-bottom: 50px;
+  min-height: 300px;
+}
+
+.menu_items {
+  max-width: 600px;
+}
+
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+// @media screen and (min-width: 768px) {
+//   .container {
+//     max-width: 730px;
+//   }
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-    clear: float;
-  }
+//   /* Remove the padding we set earlier */
+//   .header,
+//   .marketing,
+//   .footer {
+//     padding-left: 0;
+//     padding-right: 0;
+//     clear: float;
+//   }
 
-  /* Space out the masthead */
-  .header {
-    /* border: 1px solid red; */
-    margin-bottom: 30px;
-  }
-
-  /* Remove the bottom border on the jumbotron for visual effect */
-  /*  .jumbotron {
-    border-bottom: 0;
-  } */
-}
-
-/* Responsive: Portrait tablets and below */
-@media screen and (max-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-
-  h1 {
-      font-size: 40px;
-  }
-
-
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-    clear: float;
-  }
-
-  /* Space out the masthead */
-  .header {
-    /* border: 1px solid red; */
-    margin-bottom: 30px;
-  }
-
-  /* Remove the bottom border on the jumbotron for visual effect */
-  /*  .jumbotron {
-    border-bottom: 0;
-  } */
-}
-
-/* Responsive: Portrait iPhone4 and up */
-@media screen and (max-width: 480px) {
-  .container {
-    max-width: 456px;
-  }
-
-  h1 {
-      font-size: 30px;
-  }
-
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-    clear: float;
-  }
-
-  /* Space out the masthead */
-  .header {
-    /* border: 1px solid red; */
-    margin-bottom: 30px;
-  }
-
-  /* Remove the bottom border on the jumbotron for visual effect */
-  /* .jumbotron {
-    border-bottom: 0;
-  } */
-}
+//   /* Space out the masthead */
+//   .header {
+//     margin-bottom: 30px;
+//   }
+// }

@@ -30,10 +30,10 @@ describe('Router', function () {
 });
 });
 
- describe('Delivery', function () {
-     it("provides the 'delivery' object", function () {
+ describe('Order', function () {
+     it("provides the 'order' object", function () {
        // Expect exists and is an object.
-       expect(delivery).to.be.an("object");
+       expect(order).to.be.an("object");
 
 });
 });

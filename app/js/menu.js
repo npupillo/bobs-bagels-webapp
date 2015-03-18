@@ -214,9 +214,9 @@ module.bagels = [{
      return n.product_type == "c";
     });
     var template = Handlebars.compile($('#menu-info').html());
-      $('#content').html(template({
-    products: data
-  }));
+    $('#content').html(template({
+      products: data
+    }));
   };
 
   return module;

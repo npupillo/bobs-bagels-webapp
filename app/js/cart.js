@@ -9,8 +9,9 @@ var cart = (function (module) {
     orderItem['quantity'] = parseInt($('#' + menuItem +'quantity').val());
     orderItem['name'] = $('#' + menuItem +'name').text();
     orderItem['comments'] = $('#' + menuItem +'comments').val();
-	orderItem['price'] = $('#' + menuItem + 'price').text();
+	  orderItem['price'] = $('#' + menuItem + 'price').text();
     orderItem['id'] = count;
+    orderItem['description'] = $('#' + menuItem + 'description').text();
     orderItem['ingredients'] = $("form#" + menuItem + " input[type=checkbox]:checked").map(function() {
       return this.value;
     }).get();
@@ -19,12 +20,58 @@ var cart = (function (module) {
     return orderItem;
   };
 
-  var renderCart = function(){
+  renderNavCart = function(){
       var data = JSON.parse(localStorage['cart']);
+      data = calcCart(data);
       var template = Handlebars.compile($('#cart-render').html());
       $('#cart').html(template({
-      orderItem: data,
+      cart: data,
     }));
+  };
+
+  module.cartIngredientRender = function(item){
+    var ingredients = $.grep(menu.ingredients, function(n){
+     return item.ingredients.indexOf(n.id.toString()) > -1
+    });
+    item.ingredients = ingredients;
+  };
+
+  module.renderDetailedCart = function(){
+      var data = JSON.parse(localStorage['cart']);
+      if (data.length < 1){
+        $('#content').html("<h3>You haven't added anything to your cart yet. Get shopping you cheapskate!</h3>");
+      } else {
+        data.forEach(cart.cartIngredientRender);
+        var template = Handlebars.compile($('#detailed-cart-render').html());
+        $('#content').html(template({
+        orderItem: data,
+      }));
+    };
+  };
+
+  var makeNum = function(price){
+    return Number(price.substring(1, price.length));
+  };
+
+  var calcItemTotal = function(item){
+    return makeNum(item.price) * item.quantity
+  };
+
+  module.cartReset = function(){
+    localStorage.removeItem('cart');
+    localStorage.setItem('cart', "[]");
+    renderNavCart();
+  };
+
+  var calcCart = function(data){
+    var total = 0;
+    var cart = { total: 0, quantity: 0};
+    data.forEach(function(item){
+      cart['total'] = cart['total'] + calcItemTotal(item);
+      cart['quantity'] = cart['quantity'] + item.quantity;
+    });
+
+    return cart;
   };
 
   var emptyCartNormalize = function(){
@@ -40,9 +87,9 @@ var cart = (function (module) {
     var orderItem = buildOrderItem(item);
     var items = JSON.parse(localStorage["cart"]);
 	  // if the orderItem has the same name as a menuItem than add to the menuItem's quantity
-    		items.push(orderItem);
-	localStorage.setItem('cart', JSON.stringify(items));
-    renderCart();
+    items.push(orderItem);
+	  localStorage.setItem('cart', JSON.stringify(items));
+    renderNavCart();
   	};
 
 
@@ -52,21 +99,24 @@ var cart = (function (module) {
      return n.id != item.val();
     });
     localStorage.setItem('cart', JSON.stringify(items));
-    renderCart();
+    renderNavCart();
+    cart.renderDetailedCart();
   };
 
   module.init = function(){
 
-    $('#content').on('submit', 'form', function(){
+    $('#content').off().on('submit', 'form', function(event){
+      event.preventDefault();
       addItem($(this));
     });
 
-    $('#cart').on('click', 'button', function(){
+    $('#content').on('click', '.remove-cart', function(event){
+      event.preventDefault();
       removeItem($(this));
     });
 
     emptyCartNormalize();
-    renderCart();
+    renderNavCart();
   };
 
   return module;

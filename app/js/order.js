@@ -70,38 +70,54 @@ var order = (function (module) {
           delivery_phone:  localStorage["phoneNumber"],
           cart: localStorage['cart'],
           store_info: storeInfo,
-          token: token
+          token: token,
+		  customer_id: localStorage['customerId']
         }
       }
     }).done(function(data){
-      console.log("fuck yeah");
-      // _makePayment(data, token);
+      cart.cartReset();
+      renderOrderSummary(data);
     }).fail(function (jqXHR, textStatus, errorThrown) {
       console.log(jqXHR, textStatus, errorThrown);
     });
   };
 
+
+
+  renderOrderSummary = function(data){
+    var items = JSON.parse(data.data.cart);
+    items.forEach(cart.cartIngredientRender);
+    var template = Handlebars.compile($('#order-summary-render').html());
+    $('#content').html(template({
+      items: items,
+      order: data
+    }));
+  };
+
   module.init = function(){
-    $('#content').on('click', '#delivery', function(){
+    $('#content').on('click', '#delivery', function(event){
+      event.preventDefault();
       $('#delivery-add').empty().load('partials/delivery-address-form.html');
     });
 
-    $('#content').on('click', '#pickup', function(){
+    $('#content').on('click', '#pickup', function(event){
+      event.preventDefault();
       $('#delivery-add').empty();
     });
 
-    $('#content').on('click', '#delivery-submit', function(){	
+    $('#content').on('click', '#delivery-submit', function(event){
+      event.preventDefault();
       deliveryValidation();
+	  cart.renderDetailedCart();
     });
 
     $('#content').on('click', '#payment-submit', function(event){
       event.preventDefault();
       payment.cardPay();
     });
-		
-	$('#content').on('click', '#confirm', function(event){
+	$('#content').on('click', '#user-pay', function(event){
 		event.preventDefault();
-		payment.cardPay();
+		order.submitOrder();
   	});
   };
 

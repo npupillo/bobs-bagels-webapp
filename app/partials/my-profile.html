@@ -1,0 +1,35 @@
+    <!-- HANDLEBARS TEMPLATE: EDIT USER PROFILE -->
+    <script id="user_profile_template" type="text/x-handlebars-template">
+      {{#user}}
+        <div id=user-{{this.id}}>
+          <ul>
+            <li><h3>My Profile: </h3><br>
+              First Name: {{first_name}} <br>
+              Last Name: {{last_name}} <br>
+              Email: {{email}} <br>
+              Phone: {{phone_number}} <br>
+              Address 1: {{address_1}} <br>
+              Address 2: {{address_2}} <br>
+              Zipcode: {{address_zipcode}} <br>
+            </li>
+          </ul>
+
+          <button id=edit-profile-b-{{this.id}} class=edit-profile>Edit Profile</button><br>
+
+          <form id="edit-profile-form">
+            First Name: <input type=text id=user-first-name-field value="{{first_name}}" /> <br>
+            Last Name: <input type=text id=user-last-name-field value="{{last_name}}" /> <br>
+            Email: <input type=text id=user-email-field value="{{email}}" /><br>
+
+            Phone: <input type=text id=user-phone-field value="{{phone_number}}" /><br>
+            Address 1: <input type=text id=user-address-1-field value="{{address_1}}" /><br>
+            Address 2: <input type=text id=user-address-2-field value="{{address_2}}" /><br>
+            Zipcode: <input type=text id=user-zipcode-field value="{{address_zipcode}}" /><p>
+
+            <button id='edit-profile-submit' type="submit">Save Profile</button>
+            <button id='edit-profile-cancel' type="submit">Cancel</button>
+
+          </form>
+        </div>
+      {{/user}}
+    </script>
