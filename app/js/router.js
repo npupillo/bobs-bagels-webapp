@@ -59,12 +59,12 @@ var router = (function (module) {
       cart.init();
     },
 	  userPayments: function(){
-		  $('#content').empty().load('partials/user-payment.html');	  
+		  $('#content').empty().load('partials/user-payment.html');
 		  order.init();
 	  },
-	  
+
     myProfile: function(){
-      $('#content').empty().load('partials/my-profile.html');
+      $('#content').empty();
 //       $.ajax({
 //         url: module.host + "/users/1",
 //         type: 'GET'
