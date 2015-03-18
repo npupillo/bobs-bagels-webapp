@@ -1,6 +1,7 @@
 var registration = (function (module) {
 
 	var authToken;
+	var customerId;
 
 	module.submitRegistration = function () {
 		$.ajax({
@@ -18,7 +19,7 @@ var registration = (function (module) {
 
 	module.loginSuccess = function (userData) {
 		localStorage.setItem('authToken', userData.token);
-    localStorage.setItem('customerId', userData.customer_id);
+    	localStorage.setItem('customerId', userData.customer_id);
 		console.log('logged in!');
 		window.location.href = '/';
 	};

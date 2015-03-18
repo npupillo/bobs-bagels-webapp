@@ -20,7 +20,6 @@ var profile = (function (module){
   }; // end module.handleForm
 
   module.getAjax = function(user_id){
-    // debugger;
         $.ajax({
           url: 'http://localhost:3000/users/' + localStorage['authToken'],
           type: 'PATCH',

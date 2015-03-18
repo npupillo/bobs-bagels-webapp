@@ -140,9 +140,7 @@
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script src="js/menu.js" type="text/javascript"></script>
     <script src="js/router.js" type="text/javascript"></script>
-    <script src="js/payment.js" type="text/javascript"></script>
     <script src="js/cart.js" type="text/javascript"></script>
-    <script src="js/order.js" type="text/javascript"></script>
     <script src="js/registration.js" type="text/javascript"></script>
     <script src="js/my-profile.js" type="text/javascript"></script>
     <script src="js/nav.js" type="text/javascript"></script>
@@ -235,7 +233,7 @@
     {{/each}}
     </script>
 
-    <script type="text/x-handlebars-template" id='order_summary_render-render'>
+    <script type="text/x-handlebars-template" id='order-summary-render'>
     {{#order}}
       {{#each order_items}}
         <p>product.name</p>
@@ -243,6 +241,32 @@
       <p>${{total}}</p>
     {{/order}}
     </script>
+	
+  <script type="text/x-handlebars-template" id='user-pay-render'>
+	  <div class="container">
+		  <div class="row">
+	  
+	  	<div class="col-md-6">
+			<ul>
+				{{#each data}}
+				<li>name: {{name}}</li>
+				<li>address: {{address_line1}}<br>
+					{{address_line2}}</li>
+				<li>city: {{address_city}}</li>
+				<li>zip: {{address_zip}}</li>
+				<li>brand: {{brand}}</li>
+				<li>expiration date: {{exp_month}}/{{exp_year}}</li>
+				<li>type: {{type}}</li>
+				<li>card number: **** **** **** {{last4}}</li>
+	<br>
+	<button type="submit" id="pay-with-card" value="{{id}}">pay with this card</button><button type="submit" id="delete_card">delete this card</button>
+			{{/each}}
+	  <br><button type="submit" id="add_card">add card</button>
+				</div>
+			</div>
+		</div>
+
+</script>
 
   <!-- HANDLEBARS TEMPLATE: EDIT USER PROFILE -->
   <script id="user_profile_template" type="text/x-handlebars-template">
@@ -278,6 +302,9 @@
       </div>
     {{/user}}
   </script>
+<script src="js/order.js" type="text/javascript"></script>
+<script src="js/payment.js" type="text/javascript"></script>
+
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

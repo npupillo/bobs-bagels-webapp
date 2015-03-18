@@ -35,11 +35,7 @@ var order = (function (module) {
       localStorage["streetOne"] = $('#street-1').val();
       localStorage["streetTwo"] = $('#street-2').val();
       localStorage["phoneNumber"] = $('#phone-number').val();
-      if(localStorage['customerId'] != undefined) {
-        location.href = '/#/payments';
-      } else {
-        payment.payment_type();
-      };
+      payment.paymentType();
   };
 
   var loginValidation = function(){
@@ -60,6 +56,7 @@ var order = (function (module) {
     });
 
     var storeInfo = payment.checkStatus();
+//	var returnCustomerStatus = payment.getReturnCustomerStatus();
 
     $.ajax({
       url: 'http://localhost:3000/users/' + localStorage["authToken"] + '/orders',
@@ -72,7 +69,6 @@ var order = (function (module) {
           delivery_address_2: localStorage["streetTwo"],
           delivery_phone:  localStorage["phoneNumber"],
           cart: localStorage['cart'],
-          return_customer: true,
           store_info: storeInfo,
           token: token
         }
@@ -94,14 +90,19 @@ var order = (function (module) {
       $('#delivery-add').empty();
     });
 
-    $('#content').on('click', '#delivery-submit', function(){
+    $('#content').on('click', '#delivery-submit', function(){	
       deliveryValidation();
     });
 
     $('#content').on('click', '#payment-submit', function(event){
       event.preventDefault();
-      payment.card_pay();
+      payment.cardPay();
     });
+		
+	$('#content').on('click', '#confirm', function(event){
+		event.preventDefault();
+		payment.cardPay();
+  	});
   };
 
 
