@@ -1,14 +1,25 @@
 var payment = (function (module) {
 
-	module.payment_type = function(){
-		if(localStorage['customerId'] != undefined) {
-        location.href = '/#/user-payments';
-    } else {
-      location.href = '/#/payments';
-    };
-  };
+//	module.getReturnCustomerStatus = function (response) {
+//		if (response.data.length != 0) {
+//			console.log("user is a baws");
+//			return true;
+//		} else {
+//			console.log("you don't wanna know what the user is");
+//			return false;
+//		}
+//	};
 
-	module.card_pay = function () {
+	module.paymentType = function () {
+		if (localStorage['customerId'] != "undefined") {
+			location.href = '/#/user-payments';
+//			debugger;
+		} else {
+			location.href = '/#/payments';
+		};
+	};
+
+	module.cardPay = function () {
 		Stripe.card.createToken({
 			number: $('#number').val(),
 			cvc: $('#cvc').val(),
@@ -20,7 +31,7 @@ var payment = (function (module) {
 	_stripeResponseHandler = function (status, response) {
 		console.log(response);
 
-			var $form = $('#payment-form');
+		var $form = $('#payment-form');
 
 		if (response.error) {
 			$form.find('.payment-errors').text(response.error.message);
@@ -32,13 +43,13 @@ var payment = (function (module) {
 	};
 
 	module.checkStatus = function () {
-		if ($('input[name="store-payment-info"]:checked').attr('checked') == 'checked'){
+		if ($('input[name="store-payment-info"]:checked').attr('checked') == 'checked') {
 			return true;
 		} else {
 			return false;
-			}
-		};
+		}
+	};
 
-return module;
+	return module;
 
 })(payment || {});

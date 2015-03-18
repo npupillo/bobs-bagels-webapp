@@ -10,11 +10,12 @@ var router = (function (module) {
       'home': 'home',
       'payments': 'payments',
       'delivery-options': 'deliveryOptions',
-	    'registration': 'registration',
-	    'login': 'login',
+	  'registration': 'registration',
+	  'login': 'login',
       'catering': 'catering',
       'my-profile': 'myProfile',
       'about': 'about',
+	  'user-payments': 'userPayments',
       'cart': 'cart'
     },
     home: function(){
@@ -53,6 +54,11 @@ var router = (function (module) {
       }).done(menu.renderCaterMenu).fail();
       cart.init();
     },
+	  userPayments: function(){
+		  $('#content').empty().load('partials/user-payment.html');	  
+		  order.init();
+	  },
+	  
     myProfile: function(){
       $('#content').empty().load('partials/my-profile.html');
 //       $.ajax({
