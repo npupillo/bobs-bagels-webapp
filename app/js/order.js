@@ -93,6 +93,7 @@ var order = (function (module) {
 
 
   renderOrderSummary = function(data){
+    menu.prettifyOrderPrices(data.data);
     var items = JSON.parse(data.data.cart);
 
     if ((data.data.type == "delivery") || (data.data.type == "pickup")){
@@ -136,6 +137,11 @@ var order = (function (module) {
 		event.preventDefault();
 		order.submitOrder();
   	});
+  $('#content').on('click', '#decline', function(event){
+    event.preventDefault();
+    debugger;
+    location.href = "/#/payments";
+    });
   };
 
 
