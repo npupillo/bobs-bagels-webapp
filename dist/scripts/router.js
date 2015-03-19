@@ -59,9 +59,7 @@ var router = (function (module) {
       cart.init();
     },
 	  userPayments: function(){
-      cart.renderDetailedCart();
-      cart.init();
-		  $('#content-2').empty().load('partials/user-payment.html');
+		  $('#content').empty().load('partials/user-payment.html');
 		  order.init();
 	  },
 
