@@ -33,18 +33,36 @@ var profile = (function (module){
 
   indexOrderHistory = function(data){
     if (data[0].orders.length < 1) {
-      $('#content').html("<h1>You haven't made any orders yet.You don't know what you're missing!</h1>")
+      $('#content').html("<h2>You haven't made any orders yet.You don't know what you're missing!</h2>")
     } else {
       renderOrderHistory(data);
     };
   };
+  makeDatePretty = function(text) {
+    return new Date(Date.parse(text.replace(/( +)/, ' UTC$1')));
+  };
+
+
 
   renderOrderHistory = function(data){
+
     data[0].orders.forEach(function(order){
+      menu.prettifyOrderPrices(order);
+      order.created_at = makeDatePretty(order.created_at);
       order.cart = JSON.parse(order.cart);
-      order.cart.forEach(cart.cartIngredientRender);
+      if ((order.type == "delivery") || (order.type == "pickup")){
+        order.cart.forEach(function(item){
+          item.price = accounting.formatMoney(item.price);
+          cart.cartIngredientRender(item, aLaCart);
+        });
+      } else {
+        order.cart.forEach(function(item){
+          item.price = accounting.formatMoney(item.price);
+          cart.cartIngredientRender(item, catering);
+        });
+      };
     });
-    console.log(data);
+
     var template = Handlebars.compile($('#order-history-render').html());
     $('#content').html(template({
       orderHistory: data
@@ -119,7 +137,7 @@ var profile = (function (module){
 		var responseToString = JSON.stringify(response);
 		response = responseToString.replace(/\s/g, "_");
 		response = JSON.parse(responseToString);
-		
+
 		var cardInfo = response.data
 		var template = Handlebars.compile($('#user-pay-render').html());
 		$('#content').append(template({
@@ -156,8 +174,8 @@ var profile = (function (module){
 			console.log(jqXHR, textStatus, errorThrown);
 		});
 	};
-	
-	
+
+
 return module;
 
 })(profile || {});

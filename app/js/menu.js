@@ -38,6 +38,7 @@ var menu = (function (module) {
     module.renderBagelMenu = function(data, module){
 
       data.forEach(function(item){
+        item.price = accounting.formatMoney(item.price);
         renderExtras(item, module);
         renderBagels(item, module);
       });
@@ -46,9 +47,20 @@ var menu = (function (module) {
       $('#content').html(template({
         products: data
       }));
-  };
+    };
+
+    module.prettifyOrderPrices = function(order){
+      order.extras = accounting.formatMoney(order.extras);
+      order.delivery_cost = accounting.formatMoney(order.delivery_cost);
+      order.taxes = accounting.formatMoney(order.taxes);
+      order.subtotal = accounting.formatMoney(order.subtotal);
+      order.total = accounting.formatMoney(order.total);
+    };
 
     module.renderDrinks = function(data){
+      data.forEach(function(item){
+        item.price = accounting.formatMoney(item.price);
+      });
 
       var template = Handlebars.compile($('#drink-render').html());
       $('#content').append(template({

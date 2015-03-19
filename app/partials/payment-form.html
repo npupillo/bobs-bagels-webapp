@@ -1,30 +1,34 @@
 <form action="" id="payment-form">
+<h2>Give us your deets!</h2>
+<br>
 	<span class="payment-errors"></span>
 
-	<div class="form-row">
+	<div class="form-group">
 		<label>
 			<span>Card Number</span>
-			<input type="text" size="20" id="number" />
+			<input type="text" class="form-control" size="20" id="number" />
 		</label>
 	</div>
 
-	<div class="form-row">
+	<div class="form-group">
 		<label>
 			<span>CVC</span>
-			<input type="text" size="4" id="cvc" />
+			<input type="text" class="form-control" size="4" id="cvc" />
 		</label>
 	</div>
 
-	<div class="form-row">
+	<div class="form-group">
 		<label>
-			<span>Expiration (MM/YYYY)</span>
-			<input type="text" size="2" id="exp-month" />
+			<span>Expiration (MM)</span>
+			<input type="text" class="form-control" size="2" id="exp-month" />
 		</label>
-		<span> / </span>
-		<input type="text" size="4" id="exp-year" />
+		<label>
+		<span>(YYYY)</span>
+		<input type="text" size="4" class="form-control" id="exp-year" />
+		</label>
 	</div>
 
-	<div class="form-row">
+	<div class="form-group">
 		<label>
 			<input name="store-payment-info" type="checkbox" autocomplete="off" checked><b>Store your payment data?</b>
 		</label>

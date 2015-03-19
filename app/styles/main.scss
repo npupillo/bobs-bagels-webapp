@@ -101,6 +101,30 @@ body {
   border-top: 1px solid #e5e5e5;
 }
 
+button {
+  background-color: #C7142A;
+  font-family: 'Pacifico', cursive;
+  color:white;
+  border: 3px solid #2D365A;
+  border-radius: 30px;
+  padding: 10px;
+
+
+.umph {
+  font-family: 'Pacifico', cursive;
+  color:#C7142A;
+  font-size: 18px;
+}
+
+#delivery-submit {
+  background-color: #C7142A;
+  font-family: 'Pacifico', cursive;
+  color:white;
+  border: 3px solid #2D365A;
+  border-radius: 30px;
+  padding: 10px;
+}
+
 h1,h2,h3 {
     font-family: 'Pacifico', cursive;
     color: #2D365A; //blue
@@ -200,6 +224,7 @@ h1 {
 .menu_item-box {
   max-width: 100px;
 }
+
 
 
 /* Responsive: Portrait tablets and up */

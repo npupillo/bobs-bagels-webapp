@@ -23,6 +23,7 @@ var cart = (function (module) {
   renderNavCart = function(){
       var data = JSON.parse(localStorage['cart']);
       data = calcCart(data);
+      data.total = accounting.formatMoney(data.total);
       var template = Handlebars.compile($('#cart-render').html());
       $('#cart').html(template({
       cart: data,
@@ -30,7 +31,6 @@ var cart = (function (module) {
   };
 
   module.cartIngredientRender = function(item, module){
-    debugger;
     var ingredients = $.grep(module.ingredients, function(n){
      return item.ingredients.indexOf(n.id.toString()) > -1
     });
@@ -39,15 +39,20 @@ var cart = (function (module) {
 
   module.renderDetailedCart = function(){
       var data = JSON.parse(localStorage['cart']);
+
       if (data.length < 1){
         $('#content').html("<h3>You haven't added anything to your cart yet. Get shopping you cheapskate!</h3>");
       } else {
-        data.forEach(cart.cartIngredientRender);
+
+        data.forEach(function(item){
+          cart.cartIngredientRender(item, aLaCart)
+        });
+
         var template = Handlebars.compile($('#detailed-cart-render').html());
         $('#content').html(template({
-        orderItem: data,
-      }));
-    };
+          orderItem: data,
+        }));
+      };
   };
 
   var makeNum = function(price){
